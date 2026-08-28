@@ -1,0 +1,32 @@
+{
+  "skill_name": "reconcile",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Policy A says approval above €20k. Policy B says approval above €10k. Reconcile them; B is a newer draft, A is the currently approved policy.",
+      "expected_output": "A current-vs-draft distinction: A remains authoritative unless the draft has been approved, while the conflict is visible.",
+      "assertions": [
+        "Newer draft is not automatically treated as authoritative",
+        "The threshold conflict is explicit",
+        "The reconciled current rule is supported by source status"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "System A uses customer to mean account; system B uses customer to mean legal entity. Reconcile the datasets.",
+      "expected_output": "A semantic mismatch is identified before any join/merge, with a mapping or unresolved relation.",
+      "assertions": [
+        "The shared label is not assumed to mean the same entity",
+        "Semantic mismatch is explicitly classified"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Source A has no SLA field; Source B says 3 days. Does A conflict with B?",
+      "expected_output": "The missing value is classified as MISSING rather than a conflict unless A asserts a different SLA elsewhere.",
+      "assertions": [
+        "Absence is not mislabeled as contradiction"
+      ]
+    }
+  ]
+}

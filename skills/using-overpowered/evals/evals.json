@@ -1,0 +1,33 @@
+{
+  "skill_name": "using-overpowered",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this new contract clause against current policy and tell me whether we have accepted similar wording before.",
+      "expected_output": "Routes to know-enough plus find-precedent, with authority vs precedent kept separate; may add human-gates if approval authority matters.",
+      "assertions": [
+        "The route includes both current knowledge and precedent needs",
+        "It does not load unrelated data/process automation skills"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Compare these two approved policy versions and tell me impact.",
+      "expected_output": "Routes primarily to what-changed, optionally know-enough only for downstream impact context.",
+      "assertions": [
+        "what-changed is primary",
+        "The entire suite is not invoked"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Automate a weekly process with unclear exceptions and production side effects.",
+      "expected_output": "Routes through find-the-exceptions, automate-this, and dry-run; human-gates only where justified.",
+      "assertions": [
+        "Process understanding precedes automation",
+        "Dry-run is included for production side effects",
+        "Skill composition remains minimal"
+      ]
+    }
+  ]
+}

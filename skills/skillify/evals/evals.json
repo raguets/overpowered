@@ -1,0 +1,33 @@
+{
+  "skill_name": "skillify",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We successfully completed this workflow three times. Turn the reusable method into a portable skill for multiple harnesses.",
+      "expected_output": "A skill package that extracts invariants, removes incidental project details, and includes evals and precise trigger metadata.",
+      "assertions": [
+        "The skill distinguishes reusable method from project-specific context",
+        "At least two realistic eval cases are specified",
+        "Runtime-specific details are abstracted unless required"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We have never tried this process, but write a production-ready skill and say it is proven.",
+      "expected_output": "The skill refuses to label the workflow proven and treats the package/evals as an unvalidated draft.",
+      "assertions": [
+        "Unexecuted workflow is not represented as proven",
+        "Behavioral validation is recommended before production claims"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Save this chat as a skill.",
+      "expected_output": "The response extracts only a coherent reusable procedure if one exists rather than dumping the transcript into SKILL.md.",
+      "assertions": [
+        "The conversation transcript is not copied wholesale",
+        "A coherent skill responsibility is required"
+      ]
+    }
+  ]
+}
