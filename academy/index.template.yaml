@@ -1,0 +1,15 @@
+schema_version: "1"
+capabilities:
+  - id: requirement-normalizer
+    status: candidate
+    artifact_type: tool
+    summary: Preserve requirement IDs and provenance while normalizing requirement text.
+    tags: [requirements, normalization, provenance]
+    useful_for:
+      - comparing requirements across specifications
+      - preparing traceable requirement matrices
+    exclusions:
+      - generic text summarization
+    evidence_strength: single-real-task
+    risk: low
+    metadata_path: candidates/requirement-normalizer/candidate.yaml

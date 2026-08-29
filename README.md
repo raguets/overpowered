@@ -59,7 +59,7 @@ A harness can keep running until a goal is reached. `completion-audit` independe
 
 # Architecture
 
-The suite has four layers.
+The suite has **five layers**. The first three encode professional working methods, Level 3 routes them, and Level 4 lets an agent acquire a missing capability without turning the harness into a junk drawer.
 
 ## Level 0 — Discipline primitives
 
@@ -93,12 +93,21 @@ These primitives may be invoked directly, but their main value is composition.
 | `find-the-exceptions` | Turn happy-path rules into an exception-aware decision model. |
 | `automate-this` | Compile a human process into the right mix of deterministic automation, agents, systems, and human gates. |
 
-## Level 3 — Meta and orchestration
+## Level 3 — Orchestration
 
 | Skill | Purpose |
 |---|---|
-| `using-overpowered` | Select and sequence the smallest useful set of skills for a task. |
-| `skillify` | Package a proven workflow into a portable, testable Agent Skill. Experimental/meta; not a replacement for harness-native self-learning. |
+| `using-overpowered` | Select and sequence the smallest useful set of skills, reuse existing capabilities first, and route to adaptive capability only for a proven execution gap. |
+
+## Level 4 — Adaptive capability
+
+| Skill / protocol | Purpose |
+|---|---|
+| `gear-up` | Create and activate the smallest temporary capability needed to close a real execution gap, then measure whether it helped. |
+| **Skill Academy** | Evidence lifecycle for generated capabilities: ephemeral → candidate → qualified → graduated. See `ACADEMY.md`. |
+| `skillify` | Generalize and package a qualified/proven workflow into a durable portable Agent Skill. |
+
+The separation is deliberate: **`gear-up` optimizes for the task in front of you; the Academy decides what deserves to survive; `skillify` optimizes a proven method for durable reuse.**
 
 ---
 
@@ -123,10 +132,16 @@ request
   │                                      ├─ human-gates
   │                                      └─ dry-run when risky
   │
+  ├─ material execution gap remains?
+  │      ├─ missing knowledge? ────────► know-enough, not creation
+  │      ├─ installed/Academy match? ─► reuse / evaluate
+  │      └─ truly uncovered? ─────────► gear-up
+  │                                      └─ validate → activate → measure
+  │
   └─ claiming completion? ─────────────► completion-audit
 ```
 
-The important property is **conditional composition**. Do not load every skill “just in case.”
+The important property is **conditional composition**. Do not load every skill “just in case,” and do not generate a capability “just in case.” `gear-up` is the last-mile response to a proven execution gap, not a preparation ritual.
 
 ---
 
@@ -351,6 +366,119 @@ The receiver should be able to continue **without the original chat transcript**
 
 ---
 
+# Example 7 — Gear up during a live task
+
+User request:
+
+> Build a cross-document requirement matrix. Existing extraction works, but every available normalization path loses exact requirement IDs. Keep every source traceable.
+
+A disciplined agent should **not** immediately write helpers. First prove the gap:
+
+```text
+using-overpowered
+  ↓
+existing skills/tools checked
+  ↓
+knowledge gap? no — documents and rules are already known
+  ↓
+Academy match? none
+  ↓
+material capability gap
+  ↓
+gear-up
+```
+
+`gear-up` states a value test before creation:
+
+```text
+Before
+  sampled normalization loses or collides on source identity.
+
+Smallest missing capability
+  one deterministic provenance-preserving normalization tool.
+
+Success
+  100% of the validation sample preserves document + original ID,
+  with zero collisions.
+```
+
+The generated tool is written to an ephemeral task workspace, validated, activated only when the runtime confirms it, and used on the sample first. If it closes the gap, the task proceeds.
+
+After the task, the default is cleanup. If the capability created material value and plausibly generalizes, only its artifact/evidence package becomes a **Skill Academy candidate**. It is not installed globally.
+
+See the complete walkthrough in `examples/07-adaptive-capability.md`.
+
+---
+
+# Example 8 — Skill Academy graduation
+
+A temporary capability that worked once is **candidate evidence**, not a permanent skill. On a later distinct task, `gear-up` searches Academy metadata before generating again. If the candidate fits, it is staged and evaluated rather than reinvented.
+
+```text
+first real task
+  → gear-up → useful ephemeral capability
+  → Academy candidate
+
+second distinct task
+  → reuse candidate → succeeds again
+  → clean-context eval vs baseline
+  → qualified
+
+qualified method
+  → skillify
+  → generalized, eval-backed portable skill
+  → human/project graduation gate
+  → durable installation/publication
+```
+
+See `ACADEMY.md` for the lifecycle and `examples/08-academy-graduation.md` for the full example.
+
+---
+
+# `gear-up`, runtime adapters, and Pi
+
+`gear-up` deliberately separates **adaptive capability policy** from **hot-loading mechanics**.
+
+```text
+gear-up
+   = prove gap / choose minimum artifact / budget / validate / measure / retain?
+
+runtime adapter
+   = create isolated workspace / activate / deactivate / reload / report runtime state
+```
+
+This keeps the skill portable. A harness that cannot hot-load a generated artifact must report it as **staged**, not active.
+
+For Pi, `adapters/pi.md` provides a reference design based on Pi's supported skill/context reload and extension APIs. Current Pi extension docs support registering custom tools after startup and refreshing them in the same session; reload can re-read extensions, skills, prompts, and context resources. The adapter still must verify actual activation and treat generated executable code as untrusted until validated.
+
+The adapter is intentionally **not** bundled as executable code in this release; it is an integration contract/reference design so the portable Overpowered skill does not hard-code a moving Pi API.
+
+---
+
+# Skill Academy
+
+The Academy is a selection mechanism, not an ever-growing memory dump.
+
+```text
+EPHEMERAL  →  CANDIDATE  →  QUALIFIED  →  GRADUATED
+     │             │              │
+     └─ discard    └─ reject      └─ retire/supersede later
+```
+
+Key rules:
+
+- **temporary by default**;
+- one successful task can justify candidate status, not generality;
+- qualification needs evidence beyond the originating task;
+- search lightweight Academy metadata before loading candidate bodies;
+- a candidate stays visibly experimental until graduated;
+- `skillify` packages/generalizes only after adequate evidence;
+- durable deployment remains an explicit authority decision.
+
+The protocol is documented in `ACADEMY.md`; templates live in `academy/`.
+
+---
+
 # `know-enough` and RAG / pi-rag
 
 `know-enough` deliberately separates **retrieval policy** from **retrieval capability**.
@@ -405,7 +533,7 @@ Typical layouts include:
 
 or harness-specific skill directories. Consult your harness documentation for discovery paths.
 
-`using-overpowered` provides the suite-level routing policy. It is useful when the harness can automatically invoke matching skills. Explicit invocation remains useful for interactive commands such as `what-changed`, `find-precedent`, or `automate-this`.
+`using-overpowered` provides the suite-level routing policy. It is useful when the harness can automatically invoke matching skills. Explicit invocation remains useful for interactive commands such as `what-changed`, `find-precedent`, `automate-this`, or `gear-up`. Hot activation of artifacts generated by `gear-up` additionally requires a compatible runtime adapter; see `adapters/`.
 
 ---
 
@@ -423,6 +551,8 @@ This suite follows the current Agent Skills format and intentionally applies the
 8. **Composable scope.** Skills are designed like functions: coherent enough to be useful alone, narrow enough to sequence.
 9. **Eval-ready.** Every skill includes `evals/evals.json` with realistic prompts and assertions.
 10. **Evidence before confidence.** Uncertainty and source authority are explicit.
+11. **Reuse before creation.** Adaptive capability is a fallback after installed/runtime/Academy options.
+12. **Ephemeral before durable.** Generated capability must earn persistence through evidence.
 
 Primary design references:
 
@@ -455,7 +585,9 @@ It checks:
 - every `SKILL.md` is under the recommended 500-line limit;
 - referenced local Markdown/YAML/JSON files exist;
 - every skill has `evals/evals.json`;
-- every eval file names the correct skill and contains prompts, expected outputs, and assertions.
+- every eval file names the correct skill and contains prompts, expected outputs, and assertions;
+- the expected Overpowered skill set is present;
+- the Skill Academy protocol/templates and runtime adapter docs required by the adaptive layer exist.
 
 If `skills-ref` is installed, also run the official validator against each skill:
 
@@ -483,21 +615,32 @@ This is important: static correctness proves the package is structurally valid; 
 overpowered/
 ├── .github/workflows/validate.yml
 ├── .gitignore
+├── LICENSE
 ├── README.md
 ├── ARCHITECTURE.md
+├── ACADEMY.md
 ├── CATALOG.md
 ├── REFERENCES.md
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
 ├── RELEASE_CHECKLIST.md
 ├── VERSION
+├── adapters/
+│   ├── README.md
+│   └── pi.md
+├── academy/
+│   ├── README.md
+│   ├── candidate.template.yaml
+│   └── index.template.yaml
 ├── examples/
 │   ├── 01-contract-review.md
 │   ├── 02-proposal-reuse.md
 │   ├── 03-process-automation.md
 │   ├── 04-policy-change-impact.md
 │   ├── 05-data-question.md
-│   └── 06-cross-agent-checkpoint.md
+│   ├── 06-cross-agent-checkpoint.md
+│   ├── 07-adaptive-capability.md
+│   └── 08-academy-graduation.md
 ├── scripts/
 │   └── validate_suite.py
 └── skills/
@@ -515,6 +658,7 @@ overpowered/
     ├── find-the-exceptions/
     ├── automate-this/
     ├── using-overpowered/
+    ├── gear-up/
     └── skillify/
 ```
 
@@ -524,13 +668,13 @@ overpowered/
 
 The repository includes a GitHub Actions workflow that runs the static suite validator on every push and pull request. `CONTRIBUTING.md` documents the acceptance bar for new skills and `CHANGELOG.md` starts version history.
 
-A license is intentionally **not** selected in this package. Choose one before making a public repository if you want others to have explicit reuse rights.
+The repository includes the **MIT License**, matching the public GitHub repository.
 
 ---
 
 # Suggested publication strategy
 
-For a first public release, lead with a small memorable set rather than marketing all fifteen equally:
+For public positioning, lead with a small memorable set rather than marketing all sixteen skills equally:
 
 ```text
 know-enough
@@ -539,8 +683,9 @@ find-precedent
 find-the-exceptions
 automate-this
 ask-the-data
+gear-up
 ```
 
 Keep the primitives installed underneath as quality infrastructure. `using-overpowered` can later become the suite-level entry point once the individual skills have accumulated enough real-world eval evidence.
 
-Before publication, follow `RELEASE_CHECKLIST.md`: choose a license, add repository-specific install commands, and run the behavioral evals on the harnesses/models you want to support.
+Before release, follow `RELEASE_CHECKLIST.md`: run the behavioral evals on the harnesses/models you want to support, verify any claimed runtime-adapter behavior, and keep release/version notes current.

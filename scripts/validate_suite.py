@@ -81,10 +81,41 @@ for d in skill_dirs:
 expected={
 'evidence-first','assumption-audit','completion-audit','human-gates','dry-run','checkpoint',
 'know-enough','find-precedent','ask-the-data','reconcile','what-changed','find-the-exceptions',
-'automate-this','using-overpowered','skillify'}
+'automate-this','using-overpowered','gear-up','skillify'}
 actual={d.name for d in skill_dirs}
 if expected != actual:
     errors.append(f"Skill set mismatch. missing={sorted(expected-actual)}, extra={sorted(actual-expected)}")
+
+# Adaptive capability architecture required by Overpowered >=0.2.0
+required_root = [
+    ROOT/'ACADEMY.md',
+    ROOT/'adapters'/'README.md',
+    ROOT/'adapters'/'pi.md',
+    ROOT/'academy'/'README.md',
+    ROOT/'academy'/'candidate.template.yaml',
+    ROOT/'academy'/'index.template.yaml',
+    ROOT/'examples'/'07-adaptive-capability.md',
+    ROOT/'examples'/'08-academy-graduation.md',
+]
+for req in required_root:
+    if not req.exists():
+        errors.append(f"Missing adaptive-capability file: {req.relative_to(ROOT)}")
+
+for yf in [ROOT/'academy'/'candidate.template.yaml', ROOT/'academy'/'index.template.yaml']:
+    if yf.exists():
+        try:
+            parsed = yaml.safe_load(yf.read_text(encoding='utf-8'))
+            if not isinstance(parsed, dict):
+                errors.append(f"{yf.relative_to(ROOT)}: expected YAML mapping")
+        except Exception as e:
+            errors.append(f"{yf.relative_to(ROOT)}: invalid YAML: {e}")
+
+# Prevent known stale integration/branding strings from reappearing.
+for tf in [ROOT/'README.md', ROOT/'ARCHITECTURE.md', ROOT/'CATALOG.md']:
+    if tf.exists():
+        txt=tf.read_text(encoding='utf-8')
+        if re.search(r'pi-ra(?!g)', txt):
+            errors.append(f"{tf.relative_to(ROOT)}: contains stale pi-ra spelling")
 
 print(f"Validated {len(skill_dirs)} skills")
 if warnings:

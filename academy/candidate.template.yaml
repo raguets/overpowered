@@ -1,0 +1,43 @@
+schema_version: "1"
+id: requirement-normalizer
+status: candidate # ephemeral | candidate | qualified | graduated | rejected | retired
+artifact_type: tool # skill | tool | context | agent | composite
+summary: Preserve requirement IDs and source provenance while normalizing requirement text.
+
+origin:
+  created_by: gear-up
+  task_class: requirements-analysis
+  created_at: "YYYY-MM-DDTHH:MM:SSZ"
+  capability_gap: Generic extraction tools lose stable IDs during repeated normalization.
+
+value_test:
+  before: "Describe measurable failure before creation"
+  after_target: "Describe observable success condition"
+
+artifact:
+  path: artifact/
+  digest: "sha256:..."
+  runtime_requirements: []
+  permissions: []
+
+observations:
+  - task_id: "run-001"
+    context: "first real task"
+    outcome: success
+    evidence: "evidence/run-001.md"
+
+limitations: []
+failures: []
+reuse_hypothesis:
+  - "Other requirements/specification analysis tasks"
+
+qualification:
+  distinct_contexts: 1
+  behavioral_eval: not-run
+  baseline_comparison: not-run
+  critical_open_issues: []
+
+promotion:
+  human_approved: false
+  skillify_required: false
+  target: null

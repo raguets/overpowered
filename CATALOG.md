@@ -45,10 +45,20 @@ Use when rules or processes have a plausible happy path but hidden edge cases co
 ### `automate-this`
 Use when a human activity or business process should be transformed into an executable automation design.
 
-## Level 3 — Meta and orchestration
+## Level 3 — Orchestration
 
 ### `using-overpowered`
-Use to select and sequence this suite without loading irrelevant skills.
+Use to select and sequence this suite without loading irrelevant skills, and to route to adaptive capability only when the current loadout has a proven execution gap.
+
+## Level 4 — Adaptive capability
+
+### `gear-up`
+Use when a material part of the objective cannot be executed reliably with installed skills/tools, generic runtime operations, current context, knowledge retrieval, or a suitable Skill Academy candidate. Creates the smallest temporary skill/context/tool needed, validates and activates it when the runtime supports hot loading, measures real task value, then discards or nominates it for Academy evaluation.
 
 ### `skillify`
-Use after a workflow has actually succeeded and the user wants to package the reusable method as a portable skill with evals.
+Use after a workflow/capability has real reuse evidence—especially after Skill Academy qualification—to generalize and package the reusable method as a portable skill with evals. It is not the hot-generation mechanism.
+
+## Suite protocol (not an always-loaded skill)
+
+### Skill Academy
+See `ACADEMY.md`. It defines the evidence lifecycle **ephemeral → candidate → qualified → graduated**, plus rejected/retired states, so one-off generated capabilities do not pollute durable harness configuration.

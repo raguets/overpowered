@@ -7,7 +7,8 @@
       "expected_output": "Routes to know-enough plus find-precedent, with authority vs precedent kept separate; may add human-gates if approval authority matters.",
       "assertions": [
         "The route includes both current knowledge and precedent needs",
-        "It does not load unrelated data/process automation skills"
+        "It does not load unrelated data/process automation skills",
+        "gear-up is not used because the task has no demonstrated capability gap"
       ]
     },
     {
@@ -27,6 +28,16 @@
         "Process understanding precedes automation",
         "Dry-run is included for production side effects",
         "Skill composition remains minimal"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "During a requirements-analysis task, every installed extraction/normalization option loses stable requirement IDs. The documents and rules are already known, the Academy has no matching candidate, and a provenance-preserving transformation is required to finish.",
+      "expected_output": "Routes to gear-up only after stating the uncovered capability gap and a measurable success test; generation stays minimal.",
+      "assertions": [
+        "Existing capability and Academy reuse checks precede gear-up",
+        "The problem is distinguished from a knowledge gap",
+        "A measurable value test is required before creation"
       ]
     }
   ]

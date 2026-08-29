@@ -39,3 +39,16 @@ The suite is inspired by the general pattern demonstrated by strong reusable age
 ## Important limitation
 
 The included static validator proves internal package consistency. The included eval specifications make behavioral testing possible, but model/harness-level pass rates must be measured by actually running the evals in those target environments.
+
+## Adaptive capability and runtime adapters
+
+`gear-up` follows the same Agent Skills structure, but hot-loading is deliberately delegated to harness-specific adapters.
+
+For the Pi reference design, use current upstream documentation rather than freezing runtime API details into the portable skill:
+
+- Pi extensions — https://pi.dev/docs/latest/extensions
+- Pi skills — https://pi.dev/docs/latest/skills
+- Dynamic tools example — https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/dynamic-tools.ts
+- Reload-runtime example — https://github.com/earendil-works/pi/blob/main/packages/coding-agent/examples/extensions/reload-runtime.ts
+
+The architectural claims in `adapters/pi.md` should be rechecked against upstream Pi documentation when shipping an executable adapter, because runtime APIs evolve independently of Overpowered.

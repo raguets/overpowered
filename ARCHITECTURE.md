@@ -4,7 +4,9 @@
 
 The suite separates **runtime capabilities** from **working policies**.
 
-A harness may already provide goals, tools, subagents, RAG, database access, memory, and skill management. These skills should not reimplement those features. They decide how and when to use capabilities to produce reliable knowledge-work outcomes.
+A harness may already provide goals, tools, subagents, RAG, database access, memory, and skill management. Overpowered should not reimplement those features. Its skills decide how and when to use capabilities to produce reliable knowledge-work outcomes.
+
+Version 0.2 adds a second boundary: **adaptive capability acquisition**. When the current loadout is genuinely insufficient, `gear-up` may create the smallest temporary capability needed for the task. Durable promotion is handled separately through the Skill Academy and `skillify`.
 
 ## Layers
 
@@ -32,10 +34,51 @@ Primitives constrain behavior and expose failure modes. They are intentionally s
 - `find-the-exceptions`
 - `automate-this`
 
-### Level 3: meta and orchestration
+### Level 3: orchestration
 
 - `using-overpowered`
-- `skillify`
+
+### Level 4: adaptive capability
+
+- `gear-up` — acquire the smallest missing capability temporarily during execution.
+- `skillify` — generalize/package a qualified or proven workflow for durable reuse.
+- **Skill Academy protocol** — evidence-based lifecycle between temporary creation and permanent deployment; documented in `ACADEMY.md`, not implemented as an always-loaded skill.
+
+## Adaptive capability lifecycle
+
+```text
+task
+  │
+  ├─ existing capability adequate? ───────────────► use it
+  │
+  ├─ missing knowledge? ─────────────────────────► know-enough
+  │
+  ├─ Academy candidate adequate? ────────────────► stage/evaluate it
+  │
+  └─ real execution capability gap
+             │
+             ▼
+          gear-up
+             │
+      smallest validated artifact
+             │
+      activate / use / measure
+          ┌──┴───────────────┐
+          │                  │
+     ineffective          useful
+          │                  │
+       discard          candidate
+                             │
+                      repeated evidence
+                             │
+                         qualified
+                             │
+                          skillify
+                             │
+                         graduated
+```
+
+The runtime adapter supplies hot-loading mechanics; Overpowered supplies the decision policy and lifecycle. See `adapters/`.
 
 ## Composition rules
 
@@ -49,6 +92,11 @@ Primitives constrain behavior and expose failure modes. They are intentionally s
 8. Risky side effects should be simulated before execution when feasible.
 9. Completion claims require evidence proportional to the claim.
 10. A checkpoint contains durable state, not a transcript summary.
+11. **Reuse before creation.** Installed skills/tools, generic operations, and suitable Academy entries outrank generated capability.
+12. **Knowledge gaps are not capability gaps.** Retrieve missing facts instead of generating a skill/tool.
+13. **Create the weakest sufficient artifact.** One primary artifact per gap is the default budget.
+14. **Temporary is the default.** A capability must earn persistence through evidence.
+15. **Runtime state must be truthful.** A staged file is not an active skill/tool until the harness confirms activation.
 
 ## Decision table
 
@@ -64,7 +112,19 @@ Primitives constrain behavior and expose failure modes. They are intentionally s
 | Risky side effects | `dry-run` | `human-gates` |
 | About to claim done | `completion-audit` | `evidence-first` |
 | Long/cross-agent task | `checkpoint` | `completion-audit` |
-| Package a proven workflow for reuse | `skillify` | `completion-audit` |
+| Current loadout cannot execute a material step after reuse/Academy checks | `gear-up` | `dry-run`, `human-gates` |
+| Qualified/proven workflow should become a portable durable skill | `skillify` | `completion-audit` |
+
+## Capability types for `gear-up`
+
+In increasing order of power/cost:
+
+1. no generated artifact — use existing capability;
+2. scoped temporary context (`AGENTS.md` equivalent);
+3. temporary skill;
+4. temporary deterministic tool;
+5. skill + tool pair only when procedure and mechanism both add independent value;
+6. agent/subagent definition only when the harness supports it and a distinct role/tool/context boundary is materially useful.
 
 ## Knowledge source semantics
 
@@ -86,6 +146,8 @@ Every non-trivial skill has an explicit stop condition:
 - `reconcile`: every material conflict is resolved, bounded, or escalated.
 - `find-the-exceptions`: material branches are covered or explicitly unknown.
 - `automate-this`: every step has an implementation mode, inputs/outputs, failure path, and responsibility.
+- `gear-up`: the proven capability gap is closed by the smallest validated artifact, value has been observed, and the artifact is discarded or nominated to the Academy.
 - `completion-audit`: every material completion criterion has acceptable evidence or is marked not proven.
+- `skillify`: the portable package is structurally coherent, evaluation-ready, and its graduation/deployment status is truthful.
 
-This prevents “research forever” behavior.
+This prevents both “research forever” and “generate helpers forever” behavior.
