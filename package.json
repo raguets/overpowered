@@ -5,6 +5,35 @@
   "license": "MIT",
   "type": "module",
   "keywords": ["pi-package", "pi", "agent-skills", "overpowered"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raguets/overpowered.git"
+  },
+  "homepage": "https://github.com/raguets/overpowered#readme",
+  "bugs": {
+    "url": "https://github.com/raguets/overpowered/issues"
+  },
+  "files": [
+    "extensions/overpowered-runtime/",
+    "skills/**/SKILL.md",
+    "skills/**/references/",
+    "academy/",
+    "examples/09-pi-runtime-smoke/README.md",
+    "examples/09-pi-runtime-smoke/PROMPT.md",
+    "examples/09-pi-runtime-smoke/input/",
+    "examples/09-pi-runtime-smoke/expected/",
+    "examples/09-pi-runtime-smoke/fixture-tool/",
+    "tests/overpowered-runtime/MANUAL_SMOKE_TEST.md",
+    "ACADEMY.md",
+    "ARCHITECTURE.md",
+    "CATALOG.md",
+    "adapters/pi.md",
+    "VERSION"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "pi": {
     "extensions": ["./extensions/overpowered-runtime/index.ts"],
     "skills": ["./skills"]
@@ -12,7 +41,8 @@
   "scripts": {
     "test": "node --import tsx --test tests/overpowered-runtime/*.test.ts",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm test"
+    "check": "npm run typecheck && npm test",
+    "prepublishOnly": "npm run check"
   },
   "peerDependencies": {
     "@earendil-works/pi-ai": "*",
