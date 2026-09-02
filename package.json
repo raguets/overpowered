@@ -1,0 +1,31 @@
+{
+  "name": "@raguets/pi-overpowered",
+  "version": "0.3.0",
+  "description": "Safe, task-scoped adaptive capability runtime for Overpowered and Pi",
+  "license": "MIT",
+  "type": "module",
+  "keywords": ["pi-package", "pi", "agent-skills", "overpowered"],
+  "pi": {
+    "extensions": ["./extensions/overpowered-runtime/index.ts"],
+    "skills": ["./skills"]
+  },
+  "scripts": {
+    "test": "node --import tsx --test tests/overpowered-runtime/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "typebox": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "latest",
+    "@earendil-works/pi-coding-agent": "latest",
+    "@types/node": "latest",
+    "tsx": "latest",
+    "typebox": "latest",
+    "typescript": "latest"
+  },
+  "engines": { "node": ">=20" }
+}

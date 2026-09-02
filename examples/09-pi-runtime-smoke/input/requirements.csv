@@ -1,0 +1,9 @@
+document,original_id,text
+contract-a.pdf,REQ 12,The enclosure shall resist water ingress.
+contract-a.pdf,SEC.7,Operators shall receive safety training.
+contract-b.docx,req-0012,Ingress protection shall be demonstrated.
+contract-b.docx,Requirement_19,Calibration records shall be retained.
+spec-c.md,REQ0003,The unit shall expose a diagnostic port.
+spec-c.md,sec 0007,Safety training evidence shall be supplied.
+spec-c.md,R-42,The supplier shall identify replaceable parts.
+contract-a.pdf,requirement-0008,The warranty period shall be 24 months.

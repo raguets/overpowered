@@ -1,0 +1,32 @@
+{
+  "name": "normalize_requirements",
+  "description": "Normalize requirement identifiers while preserving document provenance and reporting collisions.",
+  "runtime": "node",
+  "entrypoint": "src/main.mjs",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "records": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "document": { "type": "string" },
+            "originalId": { "type": "string" }
+          },
+          "required": ["document", "originalId"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": ["records"],
+    "additionalProperties": false
+  },
+  "sideEffects": {
+    "filesystemRead": "none",
+    "filesystemWrite": "none",
+    "network": false,
+    "process": false
+  },
+  "timeoutMs": 5000
+}

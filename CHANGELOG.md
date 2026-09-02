@@ -2,6 +2,13 @@
 
 All notable changes to Overpowered will be documented here.
 
+## 0.3.0 — Pi runtime extension
+
+- Added the installable `@raguets/pi-overpowered` Pi package and executable Overpowered Runtime extension.
+- Added capability inventory, isolated workspaces, temporary context and skill activation, constrained generated tools, reload-safe state, evidence, Academy candidates, and cleanup.
+- Added path, state, validator, Academy, and subprocess-runner tests, including Windows and environment-sanitization coverage.
+- Replaced the Pi reference-only adapter documentation with installation, lifecycle, configuration, and smoke-test guidance.
+
 ## 0.2.0 — Adaptive capability layer
 
 - Added `gear-up` for evidence-gated, minimal, temporary capability creation during task execution.

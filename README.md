@@ -449,9 +449,19 @@ runtime adapter
 
 This keeps the skill portable. A harness that cannot hot-load a generated artifact must report it as **staged**, not active.
 
-For Pi, `adapters/pi.md` provides a reference design based on Pi's supported skill/context reload and extension APIs. Current Pi extension docs support registering custom tools after startup and refreshing them in the same session; reload can re-read extensions, skills, prompts, and context resources. The adapter still must verify actual activation and treat generated executable code as untrusted until validated.
+For Pi, this repository now includes the executable `@raguets/pi-overpowered` runtime extension. It uses Pi's resource discovery and reload lifecycle for temporary skills, injects explicitly lower-authority temporary context, and registers constrained generated tools behind a trusted subprocess wrapper. See `adapters/pi.md` for its lifecycle and security boundary.
 
-The adapter is intentionally **not** bundled as executable code in this release; it is an integration contract/reference design so the portable Overpowered skill does not hard-code a moving Pi API.
+## Overpowered Runtime for Pi
+
+Install the skills and optional runtime companion directly from Git:
+
+```bash
+pi install git:github.com/raguets/overpowered
+```
+
+The extension exposes two model-facing tools, `overpowered_capabilities` and `overpowered_runtime`, plus `/overpowered:status`, `/overpowered:cleanup`, and `/overpowered:academy`. `gear-up` remains responsible for proving the gap and choosing the smallest artifact; the extension only stages, validates, activates, records, and cleans it.
+
+Generated executable tools require interactive confirmation. They run in a subprocess with a sanitized environment, bounded time/output, controlled working directory, and no Pi `ExtensionAPI`, but v0.3 does not claim OS-level sandboxing. Review generated code and its declared effects before approval.
 
 ---
 

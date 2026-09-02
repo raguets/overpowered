@@ -78,7 +78,7 @@ task
                          graduated
 ```
 
-The runtime adapter supplies hot-loading mechanics; Overpowered supplies the decision policy and lifecycle. See `adapters/`.
+The runtime adapter supplies hot-loading mechanics; Overpowered supplies the decision policy and lifecycle. The Pi implementation lives in `extensions/overpowered-runtime/`: it contributes temporary skill paths during resource discovery, injects task context before agent start, wraps generated executables without exposing Pi's `ExtensionAPI`, and persists reload-safe state. See `adapters/pi.md`.
 
 ## Composition rules
 

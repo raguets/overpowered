@@ -8,3 +8,5 @@ venv/
 .env.*
 .idea/
 .vscode/
+.overpowered/runtime/
+node_modules/

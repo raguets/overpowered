@@ -12,3 +12,5 @@ These examples show **skill composition**, not just isolated prompts.
 8. `08-academy-graduation.md` — reuse a candidate on a distinct task → qualify → `skillify` → durable graduation.
 
 When adapting these examples, preserve the **reason for each skill transition**. Do not turn the sequences into mandatory pipelines. In particular, `gear-up` should remain a last-mile response to a proven execution gap, not a default preparatory step.
+
+For an executable Pi runtime walkthrough with input data, expected output, and a generated-tool fixture, see `09-pi-runtime-smoke/README.md`.

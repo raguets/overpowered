@@ -1,6 +1,14 @@
 # Pi Runtime Adapter for `gear-up`
 
-This document is a **reference design**, not a bundled executable extension. It describes how a Pi integration can implement `gear-up` hot capability activation while keeping the portable skill free of Pi-specific APIs.
+This document describes the bundled executable extension in `extensions/overpowered-runtime/`. The package name is `@raguets/pi-overpowered`; `gear-up` remains portable and free of Pi-specific APIs.
+
+## Installation
+
+```bash
+pi install git:github.com/raguets/overpowered
+```
+
+For local development, run `pi -e ./extensions/overpowered-runtime/index.ts`. Pi loads the TypeScript source directly; no build step is required.
 
 ## What Pi provides
 
@@ -21,7 +29,7 @@ Treat upstream docs as authoritative for API names because Pi evolves independen
 gear-up (portable policy)
         │
         ▼
-overpowered-pi-runtime (extension/adaptor)
+@raguets/pi-overpowered (extension/adapter)
         │
         ├─ inspect Pi skills/tools/context support
         ├─ create isolated runtime workspace
@@ -58,24 +66,40 @@ Because a reload replaces parts of runtime state, follow Pi's current extension 
 
 Never overwrite the project's durable `AGENTS.md` just to support one task. Prefer a project-scoped temporary context mechanism exposed by the adapter, or stage a lower-authority context file in a way Pi officially supports and reload. Preserve provenance so the agent can distinguish durable project instructions from ephemeral Gear Up context.
 
-### Agent/subagent definition
-
-Only support this artifact type if the installed Pi ecosystem/runtime actually exposes a safe dynamic agent-definition mechanism. If not, report the type unsupported rather than emulating it with hidden prompts.
+Agent/subagent definitions are deliberately unsupported in v0.3.
 
 ## Suggested adapter operations
 
-The exact tool names are implementation details, but the adapter should expose semantics equivalent to:
+The extension exposes exactly two model-facing management tools:
 
 ```text
-inspect_capabilities()
-search_academy(query)
-create_workspace(run_id)
-validate_artifact(path, type)
-activate_artifact(path, type)
-deactivate_artifact(id)
-record_outcome(id, evidence)
-cleanup_workspace(run_id)
+overpowered_capabilities
+  inventory | search_academy | inspect_academy_candidate
+
+overpowered_runtime
+  create_workspace | register_artifact | validate_artifact
+  activate_artifact | deactivate_artifact | record_outcome
+  nominate_candidate | cleanup | status
 ```
+
+Human-facing commands are `/overpowered:status`, `/overpowered:cleanup`, and `/overpowered:academy`. `/overpowered:reload` is the controlled support command used for skill activation.
+
+## Configuration
+
+Defaults are layered with `~/.overpowered/config.json`, then `<project>/.overpowered/config.json`. Project values win. Configuration covers artifact budgets, cleanup, Academy scopes, activation policy, supported generated-tool runtimes, timeouts, and output limits. Missing configuration is valid; malformed configuration fails visibly.
+
+## Activation lifecycle
+
+- Context: validate, mark active, then inject on later turns without changing `AGENTS.md`.
+- Skill: validate, persist pending state, queue `/overpowered:reload`, contribute its path through `resources_discover`, then confirm it from Pi's loaded skill snapshot.
+- Tool: validate `tool.json`, request confirmation, register the trusted wrapper, preserve Pi's existing active tools, then verify presence in both tool inventories.
+- Cleanup: deactivate and remove known runtime runs while leaving copied Academy candidates intact.
+
+Runtime files live under `.overpowered/runtime/`; project candidates live under `.overpowered/academy/`. Candidate nomination never produces `QUALIFIED` or `GRADUATED` state.
+
+## Manual smoke test
+
+Follow `tests/overpowered-runtime/MANUAL_SMOKE_TEST.md` for the complete context, skill, generated-tool, reload, Academy, and cleanup procedure.
 
 ## Security boundary
 
