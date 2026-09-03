@@ -456,12 +456,23 @@ For Pi, this repository now includes the executable `@raguets/pi-overpowered` ru
 Install the skills and optional runtime companion directly from Git:
 
 ```bash
+pi install npm:@raguets/overpowered
+```
+Or
+```bash
 pi install git:github.com/raguets/overpowered
 ```
 
 The extension exposes two model-facing tools, `overpowered_capabilities` and `overpowered_runtime`, plus `/overpowered:status`, `/overpowered:cleanup`, and `/overpowered:academy`. `gear-up` remains responsible for proving the gap and choosing the smallest artifact; the extension only stages, validates, activates, records, and cleans it.
 
 Generated executable tools require interactive confirmation. They run in a subprocess with a sanitized environment, bounded time/output, controlled working directory, and no Pi `ExtensionAPI`, but v0.3 does not claim OS-level sandboxing. Review generated code and its declared effects before approval.
+
+## Install
+
+To install only overpowered kills on any harness:
+```bash
+npx skills add raguets/overpowered
+```
 
 ---
 
