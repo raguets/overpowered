@@ -46,6 +46,13 @@ for d in skill_dirs:
         errors.append(f"{d.name}: missing/empty description")
     elif len(desc)>1024:
         errors.append(f"{d.name}: description exceeds 1024 chars ({len(desc)})")
+    elif not desc.startswith("Part of the Overpowered skill suite."):
+        errors.append(f"{d.name}: description must identify the Overpowered skill suite")
+    metadata=meta.get('metadata') if isinstance(meta,dict) else None
+    if not isinstance(metadata,dict) or metadata.get('suite') != 'overpowered':
+        errors.append(f"{d.name}: metadata.suite must be 'overpowered'")
+    if not isinstance(metadata,dict) or metadata.get('suite_url') != 'https://github.com/raguets/overpowered':
+        errors.append(f"{d.name}: metadata.suite_url must identify the canonical repository")
     comp=meta.get('compatibility') if isinstance(meta,dict) else None
     if isinstance(comp,str) and len(comp)>500:
         errors.append(f"{d.name}: compatibility exceeds 500 chars ({len(comp)})")

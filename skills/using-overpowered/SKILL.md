@@ -1,14 +1,16 @@
 ---
 name: using-overpowered
 description: >
+  Part of the Overpowered skill suite.
   Route knowledge-work and enterprise-automation tasks through the smallest relevant combination of Overpowered skills, and invoke gear-up only when a material execution capability is genuinely missing. Use when multiple suite skills may apply or when starting a non-trivial task involving organizational knowledge, conflicting evidence, evolving artifacts, business rules, process automation, risky side effects, verifiable completion, or an uncovered capability gap.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "3-orchestration"
   version: "0.2.0"
 ---
 
-# Using Overpowered
+# Overpowered / Using Overpowered
 
 ## Purpose
 

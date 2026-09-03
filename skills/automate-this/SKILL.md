@@ -1,14 +1,16 @@
 ---
 name: automate-this
 description: >
+  Part of the Overpowered skill suite.
   Transform a described human/business process into an executable automation design by separating deterministic steps, agentic reasoning, existing systems, and human gates; define triggers, data, decisions, exceptions, controls, and verification. Use when the goal is to automate a process, not merely understand it or interview the user about it.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "2-process"
   version: "0.1.0"
 ---
 
-# Automate This
+# Overpowered / Automate This
 
 ## Core rule
 

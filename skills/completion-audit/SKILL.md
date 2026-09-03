@@ -1,14 +1,16 @@
 ---
 name: completion-audit
 description: >
+  Part of the Overpowered skill suite.
   Independently determine whether a claimed task outcome is actually complete by reconstructing completion criteria and checking fresh evidence. Use before declaring work done, accepted, migrated, reconciled, fixed, or delivered; not as a general planning loop.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "0-primitive"
   version: "0.1.0"
 ---
 
-# Completion Audit
+# Overpowered / Completion Audit
 
 ## Core rule
 

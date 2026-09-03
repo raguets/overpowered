@@ -1,14 +1,16 @@
 ---
 name: dry-run
 description: >
+  Part of the Overpowered skill suite.
   Simulate a workflow, migration, bulk update, automation, or other side-effecting operation before committing changes. Use when effects are broad, costly, irreversible, externally visible, or difficult to audit; skip when the action is trivially reversible and low risk.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "0-primitive"
   version: "0.1.0"
 ---
 
-# Dry Run
+# Overpowered / Dry Run
 
 ## Core rule
 

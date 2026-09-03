@@ -1,14 +1,16 @@
 ---
 name: assumption-audit
 description: >
+  Part of the Overpowered skill suite.
   Expose material assumptions, hidden premises, and unresolved unknowns in a plan, analysis, design, or decision. Use before committing to work when an incorrect assumption could change the approach; avoid turning trivial low-impact unknowns into bureaucracy.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "0-primitive"
   version: "0.1.0"
 ---
 
-# Assumption Audit
+# Overpowered / Assumption Audit
 
 ## Core rule
 

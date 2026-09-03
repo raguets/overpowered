@@ -1,16 +1,18 @@
 ---
 name: find-precedent
 description: >
+  Part of the Overpowered skill suite.
   Find and compare relevant historical cases—contracts, proposals, projects, incidents, decisions, designs, or exceptions—to inform a current problem without treating similarity as authority. Use when the question is effectively 'have we dealt with something like this before?' or reusable prior work may exist.
 compatibility: >
   Requires access to one or more historical knowledge sources through RAG, search, document repositories, or equivalent tools for full functionality.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "1-knowledge"
   version: "0.1.0"
 ---
 
-# Find Precedent
+# Overpowered / Find Precedent
 
 ## Core rule
 

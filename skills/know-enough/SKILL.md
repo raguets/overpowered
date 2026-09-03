@@ -1,16 +1,18 @@
 ---
 name: know-enough
 description: >
+  Part of the Overpowered skill suite.
   Acquire the minimum sufficient knowledge needed to make the next material decision: identify knowledge gaps, choose the right authoritative or contextual sources, retrieve selectively, assess sufficiency, and stop when more retrieval is unlikely to change the outcome. Use when organization-specific, historical, current, or otherwise missing knowledge could materially affect the task and retrieval/RAG/search tools are available.
 compatibility: >
   Works with any Agent Skills-compatible harness. Retrieval is tool-agnostic; optional backends include Pi retrieval extensions such as pi-rag, MCP retrievers, RAG APIs, search tools, or vector/database tools.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "1-knowledge"
   version: "0.1.0"
 ---
 
-# Know Enough
+# Overpowered / Know Enough
 
 ## Core rule
 

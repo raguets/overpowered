@@ -1,16 +1,18 @@
 ---
 name: skillify
 description: >
+  Part of the Overpowered skill suite.
   Generalize and package a qualified or otherwise proven repeatable workflow into a portable Agent Skill with concise instructions, progressive disclosure, trigger-focused metadata, gotchas, and evals. Use after real execution evidence exists—especially for a Skill Academy capability ready to graduate; do not use as the hot-generation mechanism during a task or merely to save a conversation.
 compatibility: >
   Portable Agent Skills packaging workflow. Behavioral eval execution depends on the host harness or external eval runner.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "4-adaptive-meta-experimental"
   version: "0.2.0"
 ---
 
-# Skillify
+# Overpowered / Skillify
 
 ## Positioning
 

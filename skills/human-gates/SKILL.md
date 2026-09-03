@@ -1,14 +1,16 @@
 ---
 name: human-gates
 description: >
+  Part of the Overpowered skill suite.
   Design or review where human approval, judgment, or accountability must remain in an automated workflow. Use when automation crosses authority, legal, financial, safety, irreversible, or genuinely ambiguous decisions; do not preserve manual steps merely because they exist today.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "0-primitive"
   version: "0.1.0"
 ---
 
-# Human Gates
+# Overpowered / Human Gates
 
 ## Core rule
 

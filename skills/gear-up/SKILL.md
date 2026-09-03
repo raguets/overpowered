@@ -1,16 +1,18 @@
 ---
 name: gear-up
 description: >
+  Part of the Overpowered skill suite.
   Create and activate the smallest temporary capability needed to close a real execution gap during a task, then measure whether it helped and discard or nominate it for reuse. Use only when installed skills, available tools, existing context, knowledge retrieval, and Academy candidates cannot reliably perform a material part of the objective; supports temporary skills, context instructions such as AGENTS.md fragments, and runtime tools when the harness can load them dynamically.
 compatibility: >
   Portable decision and lifecycle policy. Hot activation of generated skills, context, or tools requires a harness/runtime adapter; never claim activation succeeded unless the runtime confirms it.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "4-adaptive-capability"
   version: "0.2.0"
 ---
 
-# Gear Up
+# Overpowered / Gear Up
 
 ## Promise
 

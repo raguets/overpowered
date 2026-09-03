@@ -1,14 +1,16 @@
 ---
 name: reconcile
 description: >
+  Part of the Overpowered skill suite.
   Compare overlapping or conflicting sources, datasets, policies, documents, definitions, or records and resolve what can be resolved while surfacing irreducible disagreement. Use when sources disagree, duplicate concepts differently, or must be merged into a trustworthy view; never silently pick a favorite source.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "1-knowledge"
   version: "0.1.0"
 ---
 
-# Reconcile
+# Overpowered / Reconcile
 
 ## Core rule
 

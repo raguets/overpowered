@@ -1,16 +1,18 @@
 ---
 name: ask-the-data
 description: >
+  Part of the Overpowered skill suite.
   Answer reproducible questions from structured data files such as Excel, CSV, JSON, TSV, or Parquet by discovering useful inputs, reading data dictionaries, loading durable relations when helpful, inspecting schema, querying only what is needed, and returning traceable results. Use when the answer is in tabular/structured files rather than prose documents.
 compatibility: >
   Best with a structured-data/DuckDB capability. Designed to compose with a lower-level `structured-data-duckdb` skill when present; can use equivalent local tabular tools otherwise.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "1-knowledge"
   version: "0.1.0"
 ---
 
-# Ask the Data
+# Overpowered / Ask the Data
 
 ## Promise
 

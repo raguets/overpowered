@@ -1,14 +1,16 @@
 ---
 name: checkpoint
 description: >
+  Part of the Overpowered skill suite.
   Create a durable, self-contained state package so a fresh agent, session, or different harness can resume non-trivial work without the original chat history. Use for long-running work, context resets, handoffs, or pauses; not for simple finished tasks.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "0-primitive"
   version: "0.1.0"
 ---
 
-# Checkpoint
+# Overpowered / Checkpoint
 
 ## Core rule
 

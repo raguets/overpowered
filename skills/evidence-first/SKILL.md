@@ -1,14 +1,16 @@
 ---
 name: evidence-first
 description: >
+  Part of the Overpowered skill suite.
   Require evidence proportional to material claims and clearly separate evidence, inference, and uncertainty. Use for research, analysis, recommendations, reports, audits, or decisions where unsupported confidence would be harmful; do not use for purely creative or stylistic tasks.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "0-primitive"
   version: "0.1.0"
 ---
 
-# Evidence First
+# Overpowered / Evidence First
 
 ## Core rule
 

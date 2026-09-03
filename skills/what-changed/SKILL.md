@@ -1,14 +1,16 @@
 ---
 name: what-changed
 description: >
+  Part of the Overpowered skill suite.
   Explain material semantic differences between versions or snapshots and assess why they matter. Use for policies, procedures, contracts, requirements, datasets, configurations, APIs, schemas, reports, or other evolving artifacts when the user cares about impact rather than a raw line diff.
 metadata:
   suite: overpowered
+  suite_url: https://github.com/raguets/overpowered
   level: "1-knowledge"
   version: "0.1.0"
 ---
 
-# What Changed
+# Overpowered / What Changed
 
 ## Core rule
 
