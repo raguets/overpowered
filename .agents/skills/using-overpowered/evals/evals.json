@@ -1,0 +1,44 @@
+{
+  "skill_name": "using-overpowered",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this new contract clause against current policy and tell me whether we have accepted similar wording before.",
+      "expected_output": "Routes to know-enough plus find-precedent, with authority vs precedent kept separate; may add human-gates if approval authority matters.",
+      "assertions": [
+        "The route includes both current knowledge and precedent needs",
+        "It does not load unrelated data/process automation skills",
+        "gear-up is not used because the task has no demonstrated capability gap"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Compare these two approved policy versions and tell me impact.",
+      "expected_output": "Routes primarily to what-changed, optionally know-enough only for downstream impact context.",
+      "assertions": [
+        "what-changed is primary",
+        "The entire suite is not invoked"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Automate a weekly process with unclear exceptions and production side effects.",
+      "expected_output": "Routes through find-the-exceptions, automate-this, and dry-run; human-gates only where justified.",
+      "assertions": [
+        "Process understanding precedes automation",
+        "Dry-run is included for production side effects",
+        "Skill composition remains minimal"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "During a requirements-analysis task, every installed extraction/normalization option loses stable requirement IDs. The documents and rules are already known, the Academy has no matching candidate, and a provenance-preserving transformation is required to finish.",
+      "expected_output": "Routes to gear-up only after stating the uncovered capability gap and a measurable success test; generation stays minimal.",
+      "assertions": [
+        "Existing capability and Academy reuse checks precede gear-up",
+        "The problem is distinguished from a knowledge gap",
+        "A measurable value test is required before creation"
+      ]
+    }
+  ]
+}

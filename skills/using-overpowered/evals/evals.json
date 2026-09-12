@@ -39,6 +39,54 @@
         "The problem is distinguished from a knowledge gap",
         "A measurable value test is required before creation"
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "Help improve the approval flow in the attached procedure and ticket export. The artifacts reveal the actors and systems, but it is unclear whether the target is current-state documentation or a future automation.",
+      "expected_output": "Inspects supplied artifacts for discoverable facts and asks only which outcome is intended because that answer changes the route; it does not demand a full brief.",
+      "assertions": [
+        "Available facts are discovered rather than requested",
+        "Only the material decision-changing question is asked",
+        "No separate framing wrapper skill is invented or invoked"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Stress-test this proposed expense-approval workflow before rollout; no production changes are requested yet.",
+      "expected_output": "Composes assumption-audit and find-the-exceptions as warranted; omits dry-run unless an actual side-effecting execution is proposed.",
+      "assertions": [
+        "Uses relevant existing pressure-test primitives",
+        "Does not mechanically invoke all primitives",
+        "Does not invent or invoke a wrapper pressure-test skill"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "We have three viable hosting options and enough cost, security, and reliability evidence. Recommend which one to use.",
+      "expected_output": "Routes directly to make-the-call; adds knowledge or reconciliation work only if a material evidence gap or conflict is found.",
+      "assertions": [
+        "Routes to make-the-call",
+        "Does not finish with only a pros/cons catalogue",
+        "Does not add evidence skills without a material need"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Use these SOPs, interviews, and tickets to understand how customer refunds really work before we automate them.",
+      "expected_output": "Routes first to map-the-work, then conditionally to find-the-exceptions and automate-this only when the current-state map and user goal require them.",
+      "assertions": [
+        "Routes current-state discovery to map-the-work",
+        "Treats exception analysis and automation as conditional next steps"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "This complete validated current-state workflow includes every step, branch, handoff, schema, and owner. Design the automation.",
+      "expected_output": "Routes directly to automate-this without remapping the already-understood process.",
+      "assertions": [
+        "Routes to automate-this",
+        "Does not invoke map-the-work merely because a process exists"
+      ]
     }
   ]
 }

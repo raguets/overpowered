@@ -1,0 +1,33 @@
+{
+  "skill_name": "know-enough",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Before reviewing this 150% liability cap, make sure you know enough. We have a legal playbook KB and a signed-contracts KB.",
+      "expected_output": "A minimal retrieval plan that gets current policy from the authoritative playbook and precedent from signed contracts, then stops when the decision is supported.",
+      "assertions": [
+        "The next decision is stated or inferable",
+        "The legal playbook is treated as authoritative and contracts as precedent",
+        "Retrieval has explicit information objectives",
+        "The skill includes a stopping/sufficiency judgment"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Rewrite this paragraph to be shorter. All text is provided. Use know-enough.",
+      "expected_output": "The skill recognizes no retrieval is needed because the task is purely transformative and context is sufficient.",
+      "assertions": [
+        "No unnecessary retrieval is proposed"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Find out whether we have ever offered a similar maintenance concept, and whether the capability is still supported today.",
+      "expected_output": "The plan separates historical proposal precedent from current product authority and searches both roles.",
+      "assertions": [
+        "Historical precedent and current capability are retrieved from different appropriate source roles",
+        "The result does not infer current support from an old proposal alone"
+      ]
+    }
+  ]
+}

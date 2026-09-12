@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "candidates": [
+    {
+      "candidateId": "candidate-bf75da2f-3862-4e98-a590-325a706055d8",
+      "status": "CANDIDATE",
+      "name": "normalize_req_ids_smoke",
+      "description": "Reads {records:[{document,originalId}]} on stdin, normalizes originalId to canonical PREFIX-NNNN (REQ/SEC/R/S, 4-digit padded), returns {records, collisions}; reports collisions, never deduplicates. No file I/O, network, or process effects.",
+      "artifactType": "tool",
+      "artifactHash": "5400e4803e705c9b6e22802aea3dd56f51a651dbc66e4bf1530057e9f0988bdf",
+      "capabilityGap": "No installed tool or Academy candidate deterministically normalizes heterogeneous requirement/section identifiers to canonical form and reports canonical-ID collisions from a CSV.",
+      "originRun": "run-e16eb648-5cc7-48ba-a8a2-038e311e776d",
+      "validation": {
+        "ok": true,
+        "checkedAt": "2026-09-02T17:35:59.288Z",
+        "errors": [],
+        "warnings": []
+      },
+      "outcome": {
+        "classification": "reusable_signal",
+        "observedResult": "Normalized all 8 CSV rows to canonical PREFIX-NNNN IDs; output deep-equal to examples/09-pi-runtime-smoke/expected/normalized.json (records + collisions). Reported 2 canonical-ID collisions (REQ-0012: 'REQ 12' + 'req-0012'; SEC-0007: 'SEC.7' + 'sec 0007') without deduplicating. Input file SHA-256 unchanged (2b933dd2...).",
+        "evidence": [],
+        "limitations": [
+          "Prefix set is closed (REQUIREMENT/REQ/SECTION/SEC/R/S); unknown prefixes raise instead of guessing",
+          "Collisions are reported globally across documents; same canonical ID reused within one document is not distinguished",
+          "CSV parsing is a minimal line/split parser; quoted fields with embedded commas are not supported",
+          "Output order follows input order; no stability guarantees across reordered inputs for collision source lists"
+        ],
+        "reuseHypothesis": "Document-to-requirement mapping and cross-document reconciliation tasks repeatedly face heterogeneous requirement/section ID formats; a canonicalization + collision-reporting step is a reusable preprocessing capability for RAG ingestion, spec comparison, and contract reconciliation workflows.",
+        "recordedAt": "2026-09-02T17:40:33.180Z"
+      },
+      "limitations": [
+        "Prefix set is closed (REQUIREMENT/REQ/SECTION/SEC/R/S); unknown prefixes raise instead of guessing",
+        "Collisions are reported globally across documents; same canonical ID reused within one document is not distinguished",
+        "CSV parsing is a minimal line/split parser; quoted fields with embedded commas are not supported",
+        "Output order follows input order; no stability guarantees across reordered inputs for collision source lists"
+      ],
+      "dependencies": [],
+      "sideEffects": {
+        "filesystemRead": "none",
+        "filesystemWrite": "none",
+        "network": false,
+        "process": false
+      },
+      "reuseHypothesis": "Document-to-requirement mapping and cross-document reconciliation tasks repeatedly face heterogeneous requirement/section ID formats; a canonicalization + collision-reporting step is a reusable preprocessing capability for RAG ingestion, spec comparison, and contract reconciliation workflows.",
+      "createdAt": "2026-09-02T17:40:43.488Z",
+      "scope": "project"
+    }
+  ]
+}

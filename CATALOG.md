@@ -20,7 +20,7 @@ Use before broad, irreversible, costly, or hard-to-audit side effects.
 ### Overpowered / `checkpoint`
 Use to make work resumable in a clean context or by another agent/harness.
 
-## Level 1 — Knowledge and evidence
+## Level 1 — Knowledge, evidence, and decision
 
 ### Overpowered / `know-enough`
 Use when task quality depends on organization-specific, historical, current, or otherwise missing knowledge and retrieval tools or knowledge bases are available.
@@ -37,7 +37,13 @@ Use when multiple sources disagree, overlap, or use incompatible terminology.
 ### Overpowered / `what-changed`
 Use when comparing versions, snapshots, policies, procedures, datasets, configurations, contracts, APIs, or other evolving artifacts.
 
+### Overpowered / `make-the-call`
+Use when multiple viable options remain and the user expects closure. Turns sufficient evidence into a clear decision, a discriminating bounded test, or an explicit justified defer.
+
 ## Level 2 — Process and automation
+
+### Overpowered / `map-the-work`
+Use when actual current-state work must be understood across actors, handoffs, systems, data, decisions, variants, and tacit rules before improvement, redesign, or automation.
 
 ### Overpowered / `find-the-exceptions`
 Use when rules or processes have a plausible happy path but hidden edge cases could break execution.

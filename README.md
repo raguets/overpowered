@@ -76,7 +76,7 @@ Small, composable rules that improve other skills and workflows.
 
 These primitives may be invoked directly, but their main value is composition.
 
-## Level 1 — Knowledge and evidence skills
+## Level 1 — Knowledge, evidence, and decision skills
 
 | Skill | Promise |
 |---|---|
@@ -85,11 +85,13 @@ These primitives may be invoked directly, but their main value is composition.
 | `ask-the-data` | Query structured files through a durable analytical layer and return traceable answers. |
 | `reconcile` | Resolve or expose disagreement across sources without silently choosing one. |
 | `what-changed` | Explain semantic changes between versions and why they matter. |
+| `make-the-call` | Turn sufficient evidence into `DECIDE`, `TEST`, or `DEFER` instead of hiding behind “it depends.” |
 
 ## Level 2 — Process and automation skills
 
 | Skill | Promise |
 |---|---|
+| `map-the-work` | Build an evidence-aware current-state map of how work actually happens before redesign or automation. |
 | `find-the-exceptions` | Turn happy-path rules into an exception-aware decision model. |
 | `automate-this` | Compile a human process into the right mix of deterministic automation, agents, systems, and human gates. |
 
@@ -117,6 +119,11 @@ The suite does **not** prescribe one giant pipeline. `using-overpowered` chooses
 
 ```text
 request
+  ├─ objective unclear? → discover available facts → audit material assumptions → ask the minimum decision-changing question
+  │
+  ├─ actual current-state work unclear? → map-the-work
+  │
+  ├─ multiple viable options require a choice? → make-the-call
   │
   ├─ material unknowns? ───────────────► know-enough
   │                                      ├─ historical analogy? → find-precedent
@@ -142,6 +149,14 @@ request
 ```
 
 The important property is **conditional composition**. Do not load every skill “just in case,” and do not generate a capability “just in case.” `gear-up` is the last-mile response to a proven execution gap, not a preparation ritual.
+
+Overpowered prefers composition over wrapper proliferation. Pressure-testing, for example, composes `assumption-audit`, `find-the-exceptions`, `dry-run`, and `completion-audit` only as needed instead of introducing a separate wrapper skill.
+
+```text
+know-enough → make-the-call
+
+map-the-work → find-the-exceptions (if needed) → automate-this (if requested)
+```
 
 ---
 
@@ -661,7 +676,9 @@ overpowered/
 │   ├── 05-data-question.md
 │   ├── 06-cross-agent-checkpoint.md
 │   ├── 07-adaptive-capability.md
-│   └── 08-academy-graduation.md
+│   ├── 08-academy-graduation.md
+│   ├── 09-make-the-call.md
+│   └── 10-map-the-work.md
 ├── scripts/
 │   └── validate_suite.py
 └── skills/
@@ -676,6 +693,8 @@ overpowered/
     ├── ask-the-data/
     ├── reconcile/
     ├── what-changed/
+    ├── make-the-call/
+    ├── map-the-work/
     ├── find-the-exceptions/
     ├── automate-this/
     ├── using-overpowered/
@@ -695,7 +714,7 @@ The repository includes the **MIT License**, matching the public GitHub reposito
 
 # Suggested publication strategy
 
-For public positioning, lead with a small memorable set rather than marketing all sixteen skills equally:
+For public positioning, lead with a small memorable set rather than marketing all eighteen skills equally:
 
 ```text
 know-enough

@@ -10,6 +10,8 @@ These examples show **skill composition**, not just isolated prompts.
 6. `06-cross-agent-checkpoint.md` — durable work state across harnesses.
 7. `07-adaptive-capability.md` — prove a capability gap → create the smallest temporary tool → validate → measure → Academy candidate.
 8. `08-academy-graduation.md` — reuse a candidate on a distinct task → qualify → `skillify` → durable graduation.
+9. `09-make-the-call.md` — evidence and assumptions → `DECIDE`, with a contrasting bounded `TEST` case.
+10. `10-map-the-work.md` — documented, evidenced, and reported current-state work → conditional exception analysis and automation.
 
 When adapting these examples, preserve the **reason for each skill transition**. Do not turn the sequences into mandatory pipelines. In particular, `gear-up` should remain a last-mile response to a proven execution gap, not a default preparatory step.
 

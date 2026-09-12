@@ -21,18 +21,22 @@ Primitives constrain behavior and expose failure modes. They are intentionally s
 - `dry-run`
 - `checkpoint`
 
-### Level 1: knowledge and evidence
+### Level 1: knowledge, evidence, and decision
 
 - `know-enough`
 - `find-precedent`
 - `ask-the-data`
 - `reconcile`
 - `what-changed`
+- `make-the-call`
 
 ### Level 2: process and automation
 
+- `map-the-work`
 - `find-the-exceptions`
 - `automate-this`
+
+The boundaries are deliberate: `map-the-work` establishes evidence-aware current-state understanding; `find-the-exceptions` enriches non-happy paths and decision models; `automate-this` compiles understood work into an executable design. Likewise, `know-enough` determines and acquires sufficient evidence, while `make-the-call` closes the choice once evidence is sufficient.
 
 ### Level 3: orchestration
 
@@ -97,6 +101,10 @@ The runtime adapter supplies hot-loading mechanics; Overpowered supplies the dec
 13. **Create the weakest sufficient artifact.** One primary artifact per gap is the default budget.
 14. **Temporary is the default.** A capability must earn persistence through evidence.
 15. **Runtime state must be truthful.** A staged file is not an active skill/tool until the harness confirms activation.
+16. **Clarify only what changes the work.** Discover available facts first, then ask only for unresolved input that materially changes the next action.
+17. **Decide once evidence is sufficient.** Use `make-the-call` instead of leaving viable options in an uncommitted catalogue.
+18. **Understand actual work before automation only when needed.** Use `map-the-work` when current state is materially unclear; do not remap an adequate specification.
+19. **Pressure-test by composition.** Select from `assumption-audit`, `find-the-exceptions`, `dry-run`, and `completion-audit` according to material failure modes.
 
 ## Decision table
 
@@ -107,8 +115,10 @@ The runtime adapter supplies hot-loading mechanics; Overpowered supplies the dec
 | Structured files / analytical question | `ask-the-data` | `evidence-first`, `completion-audit` |
 | Sources disagree | `reconcile` | `know-enough` |
 | Compare revisions or snapshots | `what-changed` | `know-enough`, `reconcile` |
+| Choose among viable options | `make-the-call` | `know-enough`, `reconcile`, `assumption-audit` |
+| Understand how current work actually happens | `map-the-work` | `reconcile`, `find-the-exceptions` |
 | Rules/process likely hide edge cases | `find-the-exceptions` | `assumption-audit` |
-| Turn human process into executable workflow | `automate-this` | `find-the-exceptions`, `human-gates`, `dry-run` |
+| Turn human process into executable workflow | `automate-this` | `map-the-work` if unclear, `find-the-exceptions`, `human-gates`, `dry-run` |
 | Risky side effects | `dry-run` | `human-gates` |
 | About to claim done | `completion-audit` | `evidence-first` |
 | Long/cross-agent task | `checkpoint` | `completion-audit` |
@@ -144,6 +154,8 @@ Every non-trivial skill has an explicit stop condition:
 - `know-enough`: additional retrieval is unlikely to change the next decision.
 - `find-precedent`: enough comparable cases exist to identify reusable patterns and material differences.
 - `reconcile`: every material conflict is resolved, bounded, or escalated.
+- `make-the-call`: exactly one of `DECIDE`, `TEST`, or `DEFER` is justified with a bounded next action.
+- `map-the-work`: the current flow and its evidence status are sufficient for the user's next decision.
 - `find-the-exceptions`: material branches are covered or explicitly unknown.
 - `automate-this`: every step has an implementation mode, inputs/outputs, failure path, and responsibility.
 - `gear-up`: the proven capability gap is closed by the smallest validated artifact, value has been observed, and the artifact is discarded or nominated to the Academy.

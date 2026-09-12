@@ -1,0 +1,32 @@
+{
+  "name": "normalize_req_ids_smoke",
+  "description": "Normalize requirement/section identifiers (e.g. 'REQ 12', 'req-0012', 'Requirement_19', 'SEC.7', 'sec 0007', 'R-42') to canonical PREFIX-NNNN form and report canonical-ID collisions without dropping rows.",
+  "runtime": "node",
+  "entrypoint": "src/main.mjs",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "records": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "document": { "type": "string" },
+            "originalId": { "type": "string" }
+          },
+          "required": ["document", "originalId"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": ["records"],
+    "additionalProperties": false
+  },
+  "sideEffects": {
+    "filesystemRead": "none",
+    "filesystemWrite": "none",
+    "network": false,
+    "process": false
+  },
+  "timeoutMs": 5000
+}

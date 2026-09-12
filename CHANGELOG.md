@@ -2,6 +2,13 @@
 
 All notable changes to Overpowered will be documented here.
 
+## 0.4.0 — Decision closure and current-state process mapping
+
+- Added `make-the-call` to close evidence-backed choices with `DECIDE`, `TEST`, or `DEFER`.
+- Added `map-the-work` to distinguish documented, evidenced, and reported current-state work before redesign or automation.
+- Refined `using-overpowered` with minimal framing, conditional process discovery, decision routing, and pressure-testing by composition.
+- Expanded suite documentation, examples, evals, and validation from 16 to 18 skills.
+
 ## 0.3.0 — Pi runtime extension
 
 - Added the installable `@raguets/pi-overpowered` Pi package and executable Overpowered Runtime extension.

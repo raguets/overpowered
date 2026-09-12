@@ -88,7 +88,7 @@ for d in skill_dirs:
 expected={
 'evidence-first','assumption-audit','completion-audit','human-gates','dry-run','checkpoint',
 'know-enough','find-precedent','ask-the-data','reconcile','what-changed','find-the-exceptions',
-'automate-this','using-overpowered','gear-up','skillify'}
+'make-the-call','map-the-work','automate-this','using-overpowered','gear-up','skillify'}
 actual={d.name for d in skill_dirs}
 if expected != actual:
     errors.append(f"Skill set mismatch. missing={sorted(expected-actual)}, extra={sorted(actual-expected)}")

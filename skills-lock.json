@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "skills": {
+    "ask-the-data": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/ask-the-data/SKILL.md",
+      "computedHash": "f54a83d628df86a0f0379992ad1ede9073b87b1e49606740824bd7b11eef52c8"
+    },
+    "assumption-audit": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/assumption-audit/SKILL.md",
+      "computedHash": "c6ffe4b0b10ada182bc7a46ec210ee8a921aaf48cccc78eb4860fe3ba23cd313"
+    },
+    "automate-this": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/automate-this/SKILL.md",
+      "computedHash": "8b2a51ac48ea62387ee2977ee5d9c6782d642e45f644678d03c039d06886e99d"
+    },
+    "checkpoint": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/checkpoint/SKILL.md",
+      "computedHash": "0f50ff30ca75fea1bacca18db1dde1fafb1c5547beab089eeb1af2b231a0f712"
+    },
+    "completion-audit": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/completion-audit/SKILL.md",
+      "computedHash": "0966bb48e4338177ee1dadf5c27732e01ff3926156da4612ccc864d7313df6c7"
+    },
+    "dry-run": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/dry-run/SKILL.md",
+      "computedHash": "e4de660c51649fb2a7249d3f033df86908f7b1e4ffc995f1cb36db9979e79583"
+    },
+    "evidence-first": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/evidence-first/SKILL.md",
+      "computedHash": "01f64fa5b12b6d50cf47acc5fec7718b1c319f06d4dbc8e1506c8df91753102c"
+    },
+    "find-precedent": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/find-precedent/SKILL.md",
+      "computedHash": "c5391ebf1758bd30a01a78def30d633cf01c7eccf19cb37fa60caef1a3307d90"
+    },
+    "find-the-exceptions": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/find-the-exceptions/SKILL.md",
+      "computedHash": "1adfaefb7b023254e94282e04bec6a43dd7994a612eb65c999f067056100008b"
+    },
+    "gear-up": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/gear-up/SKILL.md",
+      "computedHash": "b31ff4e1cd150200ac2c6ac93de61d80970e6e7abc06f43d68f02f7f75a491b6"
+    },
+    "human-gates": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/human-gates/SKILL.md",
+      "computedHash": "e59150dab0d5ddf3975c4472d5ec515727dd0a34699e2b3a5d5ed9cd98b51a23"
+    },
+    "know-enough": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/know-enough/SKILL.md",
+      "computedHash": "3e36d8bfec1638dc9e2a8eeef6d53bbfcfbc972f148673e7a243e5489b2297ca"
+    },
+    "reconcile": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/reconcile/SKILL.md",
+      "computedHash": "bdf33b182ca8e229f45091f0be7a2f12f8a943cf17bb28467cbd3b37bfcd00ac"
+    },
+    "skillify": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/skillify/SKILL.md",
+      "computedHash": "2cd9571f3abfe9e7a4473b8920803a6b9162c9a324ce040ba6ff581aec724b9f"
+    },
+    "using-overpowered": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/using-overpowered/SKILL.md",
+      "computedHash": "800ec832dd03cb7328b466643f9d04a61fa31e43b9714d07d5a0ecfc801b7645"
+    },
+    "what-changed": {
+      "source": "raguets/overpowered",
+      "sourceType": "github",
+      "skillPath": "skills/what-changed/SKILL.md",
+      "computedHash": "c9494080ca8e5b26ac1d58d36334e63696447ab8dde992bbe8a8be86204c0bb7"
+    }
+  }
+}

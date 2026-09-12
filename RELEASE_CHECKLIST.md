@@ -11,6 +11,7 @@ Use this before publishing the suite or an individual skill.
 - [ ] `SKILL.md` is concise; conditional detail is moved to one-level references.
 - [ ] Every local reference is explicitly loaded only when needed.
 - [ ] Root `VERSION`, `CHANGELOG.md`, architecture/catalog, and skill versions are consistent with the release.
+- [ ] The validator reports the expected 18-skill set, including `make-the-call` and `map-the-work`.
 
 ## Behavioral
 
