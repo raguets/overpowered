@@ -1,10 +1,15 @@
 {
   "name": "@raguets/pi-overpowered",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Safe, task-scoped adaptive capability runtime for Overpowered and Pi",
   "license": "MIT",
   "type": "module",
-  "keywords": ["pi-package", "pi", "agent-skills", "overpowered"],
+  "keywords": [
+    "pi-package",
+    "pi",
+    "agent-skills",
+    "overpowered"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raguets/overpowered.git"
@@ -35,8 +40,12 @@
     "registry": "https://registry.npmjs.org/"
   },
   "pi": {
-    "extensions": ["./extensions/overpowered-runtime/index.ts"],
-    "skills": ["./skills"]
+    "extensions": [
+      "./extensions/overpowered-runtime/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
   },
   "scripts": {
     "test": "node --import tsx --test tests/overpowered-runtime/*.test.ts",
@@ -57,5 +66,7 @@
     "typebox": "latest",
     "typescript": "latest"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }
