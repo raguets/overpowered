@@ -2,6 +2,8 @@
 
 A registry tells the agent **what a source means**, not just how to call it.
 
+A registry entry never grants access; use only sources actually accessible within the task's authorization.
+
 Prefer a project-level file such as `KNOWLEDGE_SOURCES.yaml`, but do not require one if the harness can discover sources dynamically.
 
 For each source, describe:

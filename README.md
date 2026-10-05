@@ -515,7 +515,7 @@ The protocol is documented in `ACADEMY.md`; templates live in `academy/`.
 
 ---
 
-# `know-enough` and RAG / pi-rag
+# `know-enough` and adaptive retrieval
 
 `know-enough` deliberately separates **retrieval policy** from **retrieval capability**.
 
@@ -523,17 +523,17 @@ The protocol is documented in `ACADEMY.md`; templates live in `academy/`.
 know-enough
    = when / what / where / enough?
 
-pi-rag, MCP retriever, RAG API, vector DB tool...
-   = execute retrieval
+harness / available orchestration
+   = map the strategy to existing capabilities and execute it
 ```
 
-This makes the skill portable while allowing `pi-rag` to be an excellent implementation backend in Pi.
+It chooses the simplest sufficient path: direct reading, structured query, lexical search, semantic/hybrid search, relationship lookup, or authorized document preparation. It combines capabilities only when needed, checks source evidence, and stops when the task and risk are covered. Existing evidence may require no search at all. The policy is harness- and tool-agnostic; specialized classification is optional, with rules or the active model's reasoning as the normal fallback. Unavailable capabilities and access limits are reported explicitly.
 
 A knowledge-source registry is recommended. See:
 
 - `skills/know-enough/references/knowledge-source-registry.md`
 - `skills/know-enough/references/knowledge-sources.example.yaml`
-- `skills/know-enough/references/pi-rag-integration.md`
+- `skills/know-enough/references/adaptive-retrieval.md`
 
 The registry should describe **meaning**, not tool plumbing: scope, authority, freshness, intended uses, and exclusions.
 

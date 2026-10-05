@@ -50,7 +50,7 @@ Before substantial action, scan these conditions:
 4. **Decide when evidence is sufficient.** When several viable options remain after relevant evidence work, use `make-the-call` instead of ending with an uncommitted pros/cons list.
 5. **Authority before analogy.** Current authoritative knowledge outranks precedent for normative questions.
 6. **Conflict before synthesis.** Reconcile material disagreement before producing a single “truth.”
-7. **Reuse before creation.** Installed skills/tools, generic runtime capabilities, and relevant Academy candidates outrank `gear-up` generation.
+7. **Reuse before creation.** Installed skills/tools, generic runtime capabilities, and relevant Academy candidates outrank `gear-up` generation. Map a functional knowledge-acquisition plan to available skills/tools/services and delegate execution through the harness without assuming any named implementation is installed.
 8. **Create only for a proven capability gap.** Missing knowledge, convenience, token pressure, or a long prompt are not capability gaps.
 9. **Simulation before risky side effects.** Use `dry-run` when a preview meaningfully reduces risk.
 10. **Evidence before completion.** Use `completion-audit` before strong done/fixed/migrated/reconciled claims.

@@ -2,6 +2,13 @@
 
 All notable changes to Overpowered will be documented here.
 
+## Unreleased
+
+- Added proportional adaptive retrieval to `know-enough`, with functional strategies, delegated execution, evidence checks, explicit limits, and stopping criteria.
+- Replaced backend-specific retrieval guidance with portable capability guidance and expanded the existing evaluation scenarios.
+- Removed the implemented runtime and decision/process skill specifications; current implementation and maintained documentation cover them.
+- Removed the obsolete generated 0.3.0 package, which still embedded superseded retrieval guidance.
+
 ## 0.4.0 — Decision closure and current-state process mapping
 
 - Added `make-the-call` to close evidence-backed choices with `DECIDE`, `TEST`, or `DEFER`.
@@ -32,6 +39,6 @@ All notable changes to Overpowered will be documented here.
 - Introduced the Overpowered brand and suite architecture.
 - Added 15 composable Agent Skills across discipline, knowledge/evidence, process/automation, and orchestration layers.
 - Added `using-overpowered` as the suite-level routing skill.
-- Added `know-enough` integration guidance for `pi-rag` and other retrieval backends.
+- Added `know-enough` guidance for retrieval capabilities.
 - Added complete usage examples and eval specifications.
 - Added static validation and GitHub Actions CI.

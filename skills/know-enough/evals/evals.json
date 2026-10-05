@@ -17,7 +17,8 @@
       "prompt": "Rewrite this paragraph to be shorter. All text is provided. Use know-enough.",
       "expected_output": "The skill recognizes no retrieval is needed because the task is purely transformative and context is sufficient.",
       "assertions": [
-        "No unnecessary retrieval is proposed"
+        "No unnecessary retrieval is proposed",
+        "The stopping judgment explains that all evidence needed for the transformation is already present"
       ]
     },
     {
@@ -27,6 +28,109 @@
       "assertions": [
         "Historical precedent and current capability are retrieved from different appropriate source roles",
         "The result does not infer current support from an old proposal alone"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Use know-enough to check whether batch B-12 meets the inspection threshold. All relevant evidence is supplied: the current approved rule QA-4 v3 section 2 requires at least 95% inspected; the complete signed B-12 inspection record dated today reports 98% inspected. Scope and units match, and no conflicting evidence is known. A search service is available.",
+      "expected_output": "Answers that the supplied record meets the stated threshold, cites both supplied sources, and stops with ENOUGH because further acquisition would not change this bounded check.",
+      "assertions": [
+        "Uses the supplied approved rule and signed record with their references",
+        "Does not search merely because a search service is available",
+        "Explains sufficiency for this threshold check without claiming broader compliance"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Find the exact inspection interval for reference MX-204 in the accessible current approved maintenance manual. Targeted file reading, exact text search, and semantic search are available. Exact search for MX-204 returns no match; the document index shows the spelling MX 204. The matching section 7.2 states an interval of 90 days.",
+      "expected_output": "Uses targeted reading or lexical lookup, accounts for the spelling variant, and cites the matching section and current document identity before stopping.",
+      "assertions": [
+        "Prefers direct reading or lexical search over unnecessary semantic retrieval",
+        "Does not infer absence from the initial no-match result and checks the relevant spelling variant",
+        "Reports the 90-day interval with the original passage and source location",
+        "Stops once the exact reference, applicability, and source authority are established"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Which active test facilities in region West support loads of at least 20 tonnes? An authorized structured-query capability exposes the current facility register and its dictionary; a document search capability is also available. The schema has facility_id, status, region, and max_load_kg. The dictionary defines 1 tonne as 1000 kg and status A as active. Rows are F-1/A/West/25000, F-2/A/West/15000, F-3/I/West/30000, F-4/A/East/25000.",
+      "expected_output": "Selects structured querying, resolves schema and units, filters status A, region West, and max_load_kg >= 20000, and returns only F-1 with traceable query logic and records.",
+      "assertions": [
+        "Requests a structured capability that the environment actually provides",
+        "Checks the schema, category definitions, units, and facility identifiers",
+        "Returns F-1 only, with reproducible filters and record provenance",
+        "Does not add semantic search or specialized classification when the exact query suffices"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Why are teams informally bypassing design review? Evaluate this prompt separately in two fictional environments with the same know-enough instructions. Environment A offers tools called Lantern and Folio; environment B offers tools called Pebble and Ledger. In each environment, the first tool searches accessible approved procedures and incident narratives with lexical, semantic, or hybrid retrieval and returns document IDs, dates, locations, and scores; the second reads original passages. The environments expose equivalent sources and evidence: current procedure P-2 section 4 requires review, incident I-7 paragraph 3 reports a queue delay, and incident I-8 paragraph 2 reports duplicate data entry. Incident authors use 'skip the gate' rather than 'bypass design review'. There is no structured database or specialized classifier.",
+      "expected_output": "In each environment, requests appropriate conceptual or text retrieval, checks original passages, distinguishes current policy from reported workarounds, and offers a bounded explanation supported by the incidents. The harness maps the strategy to the tools actually exposed without changing the skill.",
+      "assertions": [
+        "Both runs apply the same functional strategy and evidence requirements despite renamed tools",
+        "Uses text, semantic, or hybrid retrieval appropriate to vocabulary variation without requiring a structured-first sequence",
+        "Inspects and cites original passages and keeps normative procedure distinct from incident observations",
+        "Does not treat similarity scores as authority or impose a universal threshold",
+        "Works without a specialized classifier and stops with explicit limits on the explanatory coverage"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Find active facilities with capacity >= 20 tonnes that have handled a similar salt-fog endurance test. Authorized structured querying, documentary search, source reading, and established-relationship lookup are available. The current register qualifies F-1 and F-2. Historical reports T-9 and T-11 describe relevant tests and link to F-1 through stable facility_id; report T-10 describes a different procedure and mentions a site name resembling F-2 but has no verified facility link.",
+      "expected_output": "Uses a minimal composite plan to establish current eligibility, find relevant historical passages, and verify facility links. Reports supported experience for F-1 while marking F-2's experience unsupported by the available evidence.",
+      "assertions": [
+        "States the knowledge objective, requested capabilities, accessible sources, expected evidence per step, and stopping criterion in ordinary language",
+        "Combines structured and documentary evidence only to meet the two material requirements",
+        "Reconciles records and passages using stable IDs and attested relationships rather than similar names",
+        "Keeps current eligibility separate from historical experience and preserves provenance across steps",
+        "Does not infer truth from a successful join or claim F-2 has never performed such a test",
+        "Accepts an evidence-justified order without requiring structured search before documentary retrieval"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Determine what evidence is needed to compare approved welding procedures for thin aluminium. Accessible manuals can be read and searched by exact terms or concepts. Evaluate three independent variants: (A) no specialized classifier is installed; (B) an authorized optional classifier fails; (C) it returns an ambiguous routing judgment. The active model and the reading/search capabilities remain available in every variant.",
+      "expected_output": "In every variant, reasons about the material gap using rules or the active model, selects a minimal available search strategy, and judges sufficiency from consulted source evidence.",
+      "assertions": [
+        "Treats missing classification as normal and continues after failure or ambiguity without requiring installation",
+        "The active model remains responsible for the fallback strategy",
+        "Does not invent a service, endpoint, or classification result",
+        "Bases sufficiency on original source evidence rather than classification confidence"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "What is the current approved retention period for project records? Evaluate three independent environments. (A) A registry names the policy repository, but access is denied; the only readable source is an old draft. (B) The source is authorized, but the harness has no way to search or read it. (C) Authorized search and reading work, but targeted reference and spelling-variant searches return no applicable policy. No further authoritative source is available in any variant.",
+      "expected_output": "Distinguishes denied access, missing capability, and a genuine no-match result. Explains why the current requirement is NOT ENOUGH supported, reports the specific missing authoritative evidence and limits, and stops without fabricating a period.",
+      "assertions": [
+        "Does not claim a denied or technically unreadable source was searched",
+        "Does not treat a registry entry as access authorization or an old draft as current authority",
+        "Distinguishes no match from source inaccessibility and does not infer that no retention rule exists",
+        "Does not invent tools, data, or a current requirement and does not create a new tool by default",
+        "Reports NOT ENOUGH, the missing evidence, and whether the task can safely proceed instead of looping"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "What inspection interval applies to pump class P? Two accessible approved bulletins cover class P: B-7 v2 section 3 says 30 days; B-8 v1 section 5 says 60 days. Their effective dates overlap, neither declares supersession, and search gives B-8 a higher similarity score. A bounded check of their approval metadata and scope reveals no rule resolving the conflict.",
+      "expected_output": "Cites both bulletins, identifies the unresolved material conflict, checks authority/dates/scope proportionately, and returns NOT ENOUGH for a definitive interval with the unresolved authority question explicit.",
+      "assertions": [
+        "Preserves both conflicting source claims and locations",
+        "Does not silently choose the higher score, average the intervals, or invent a supersession rule",
+        "Limits further retrieval to evidence that could resolve the conflict",
+        "Reports the remaining uncertainty and NOT ENOUGH when accessible checks cannot settle the requirement"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Find requirement R-9 in an accessible approved scanned inspection report. The current tools cannot read its image text. The harness exposes a document-preparation capability. Evaluate two variants: (A) preparation would upload the report to an external service, and that transfer has no authorization; (B) local preparation is already explicitly authorized and yields R-9 on page 6 with the original document identity preserved, but the extracted wording is partly illegible.",
+      "expected_output": "In A, explains the preparation and transfer scope needed and does not ingest or upload without authorization. In B, delegates within existing authorization, preserves provenance, and reports insufficient evidence for the illegible requirement unless a targeted source check can resolve it.",
+      "assertions": [
+        "Distinguishes source access from authorization to prepare or transmit content",
+        "Does not automatically ingest or upload in variant A or install an ingestion engine",
+        "Uses the available authorized capability in variant B without requesting the same permission again",
+        "Retains the source identity and page location after preparation",
+        "Does not treat successful extraction as proof of a complete or accurate requirement; reports the remaining evidence gap"
       ]
     }
   ]

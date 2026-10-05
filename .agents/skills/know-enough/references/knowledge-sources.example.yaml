@@ -11,7 +11,6 @@ sources:
     avoid_for:
       - proving what a specific historical customer accepted
     freshness: current
-    adapter: pi-rag
     target: legal-playbook
 
   signed-contracts:
@@ -25,7 +24,6 @@ sources:
     avoid_for:
       - inferring current policy or delegated authority
     freshness: historical
-    adapter: pi-rag
     target: signed-contracts
 
   previous-offers:
@@ -40,7 +38,6 @@ sources:
       - current pricing
       - copying customer-specific commitments
     freshness: historical
-    adapter: pi-rag
     target: previous-offers
 
   product-reference:
@@ -54,5 +51,4 @@ sources:
     avoid_for:
       - historical deal commitments
     freshness: current
-    adapter: pi-rag
     target: product-reference

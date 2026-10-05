@@ -44,7 +44,7 @@ Before substantial action, scan these conditions:
 2. **Know before guessing.** Use `know-enough` when retrieval can resolve a material uncertainty.
 3. **Authority before analogy.** Current authoritative knowledge outranks precedent for normative questions.
 4. **Conflict before synthesis.** Reconcile material disagreement before producing a single “truth.”
-5. **Reuse before creation.** Installed skills/tools, generic runtime capabilities, and relevant Academy candidates outrank `gear-up` generation.
+5. **Reuse before creation.** Installed skills/tools, generic runtime capabilities, and relevant Academy candidates outrank `gear-up` generation. Map a functional knowledge-acquisition plan to available skills/tools/services and delegate execution through the harness without assuming any named implementation is installed.
 6. **Create only for a proven capability gap.** Missing knowledge, convenience, token pressure, or a long prompt are not capability gaps.
 7. **Simulation before risky side effects.** Use `dry-run` when a preview meaningfully reduces risk.
 8. **Evidence before completion.** Use `completion-audit` before strong done/fixed/migrated/reconciled claims.

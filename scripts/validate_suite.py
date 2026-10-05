@@ -117,13 +117,6 @@ for yf in [ROOT/'academy'/'candidate.template.yaml', ROOT/'academy'/'index.templ
         except Exception as e:
             errors.append(f"{yf.relative_to(ROOT)}: invalid YAML: {e}")
 
-# Prevent known stale integration/branding strings from reappearing.
-for tf in [ROOT/'README.md', ROOT/'ARCHITECTURE.md', ROOT/'CATALOG.md']:
-    if tf.exists():
-        txt=tf.read_text(encoding='utf-8')
-        if re.search(r'pi-ra(?!g)', txt):
-            errors.append(f"{tf.relative_to(ROOT)}: contains stale pi-ra spelling")
-
 print(f"Validated {len(skill_dirs)} skills")
 if warnings:
     print("Warnings:")
