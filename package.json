@@ -21,7 +21,7 @@
   "files": [
     "extensions/overpowered-runtime/",
     "skills/**/SKILL.md",
-    "skills/**/references/",
+    "skills/**/references/**",
     "academy/",
     "examples/09-pi-runtime-smoke/README.md",
     "examples/09-pi-runtime-smoke/PROMPT.md",
@@ -30,6 +30,8 @@
     "examples/09-pi-runtime-smoke/fixture-tool/",
     "tests/overpowered-runtime/MANUAL_SMOKE_TEST.md",
     "ACADEMY.md",
+    "adapters/knowledge-integrations.md",
+    "tests/knowledge-integrations/",
     "ARCHITECTURE.md",
     "CATALOG.md",
     "adapters/pi.md",
@@ -49,6 +51,7 @@
   },
   "scripts": {
     "test": "node --import tsx --test tests/overpowered-runtime/*.test.ts",
+    "test:knowledge-integrations": "node --test tests/knowledge-integrations/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "check": "npm run typecheck && npm test",
     "prepublishOnly": "npm run check"

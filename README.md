@@ -537,6 +537,8 @@ A knowledge-source registry is recommended. See:
 
 The registry should describe **meaning**, not tool plumbing: scope, authority, freshness, intended uses, and exclusions.
 
+Existing technical integrations can supply the optional F1/F2 capabilities: an externally maintained `ask-rag-engine` skill for retrieval and Pi's `system_one` tool for structured judgments. Overpowered reuses their contracts, configuration, and validation. See [the deployment note](adapters/knowledge-integrations.md) for `pi-system-one` with Ollama/Clef-Flash, and [integration verification](tests/knowledge-integrations/README.md). Neither component becomes a dependency of `know-enough`.
+
 ---
 
 # `ask-the-data` and DuckDB

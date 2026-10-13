@@ -101,6 +101,8 @@ Runtime files live under `.overpowered/runtime/`; project candidates live under 
 
 Follow `tests/overpowered-runtime/MANUAL_SMOKE_TEST.md` for the complete context, skill, generated-tool, reload, Academy, and cleanup procedure.
 
+For existing retrieval and classification capabilities, see [knowledge-integrations.md](knowledge-integrations.md). It covers the external `ask-rag-engine` skill and `pi-system-one` with Ollama; these remain separate from the Overpowered runtime extension.
+
 ## Security boundary
 
 Pi extensions execute with the user's process permissions. Generated executable code therefore deserves the same scrutiny as any code the agent proposes to run:

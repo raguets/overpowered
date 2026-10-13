@@ -147,6 +147,8 @@ In increasing order of power/cost:
 
 A source can be high quality and still have the wrong role for a decision.
 
+Optional retrieval and classification implementations remain outside this policy layer. An installed retrieval skill or classification extension supplies its own protocol, configuration, and validation; the harness maps the requested capability to it. [Deployment-specific integration guidance](adapters/knowledge-integrations.md) covers reuse of existing F1/F2 components without adding another skill, HTTP client, or routing engine to the suite.
+
 ## Stopping conditions
 
 Every non-trivial skill has an explicit stop condition:

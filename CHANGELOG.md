@@ -4,6 +4,9 @@ All notable changes to Overpowered will be documented here.
 
 ## Unreleased
 
+- Integrated optional F1/F2 through existing external retrieval and classification capabilities, with generic handoff rules, evaluation scenarios, and a Pi/Ollama deployment note.
+- Added opt-in compatibility checks against external `pi-system-one` source with synthetic HTTP responses, plus a live harness smoke procedure.
+- Fixed the npm file pattern so skill reference contents, including adaptive retrieval guidance, are included in the package.
 - Added proportional adaptive retrieval to `know-enough`, with functional strategies, delegated execution, evidence checks, explicit limits, and stopping criteria.
 - Replaced backend-specific retrieval guidance with portable capability guidance and expanded the existing evaluation scenarios.
 - Removed the implemented runtime and decision/process skill specifications; current implementation and maintained documentation cover them.

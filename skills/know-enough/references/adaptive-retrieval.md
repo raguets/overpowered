@@ -29,6 +29,17 @@ All capabilities are optional. If one is absent or access is denied, use a legit
 
 When specialized classification is useful and available, send only the useful, authorized context. If it is absent, disabled, fails, or is ambiguous, the active model remains responsible for a reasoned fallback. Classification confidence does not establish evidence sufficiency.
 
+## Handoff to existing retrieval and classification capabilities
+
+Follow the selected capability's installed instructions and actual request/response contract. Reuse its configuration and transport; do not create a duplicate skill or client. Discover supported search modes from the deployment, and request hybrid search or reranking only when actually exposed. A generated answer with citations is not necessarily an original passage: preserve the citations as returned, identify the answer as a synthesis, and obtain the original evidence when the claim and risk require it. Do not invent missing identifiers, page numbers, dates, or server features. An explicit no-answer response describes that search's coverage, not proof that the fact does not exist.
+
+For an optional classification handoff:
+
+1. Confirm that an available, approved deployment can answer the needed judgment. Installed model weights or a registered tool alone do not prove that the serving endpoint is compatible or authorized for the context. Keep deployment settings and secrets in the environment that owns the capability.
+2. State the bounded judgment and supply only the minimal authorized context. Use separate named questions for conditions that can both hold, such as structured filters and conceptual retrieval needs; do not force them into a mutually exclusive choice. Use a named choice for exclusive alternatives and an ordered rubric for a score.
+3. Preserve question identifiers, returned values/distributions, rubric meaning, and available model/provider information. Check missing answers, incompatible types, and execution errors through the selected capability's existing validation. Do not replace missing values with zero, round a fractional rubric score into a category, or treat a confidence statistic as factual correctness.
+4. Use the judgment to inform a targeted acquisition plan, then check source evidence normally. Do not introduce universal decision thresholds. If the result is ambiguous, malformed, unavailable, or outside the approved deployment, return to the active model's reasoning without automatically switching to another service or repeatedly retrying.
+
 ## Conceptual plan
 
 Use a few lines of ordinary language when helpful:

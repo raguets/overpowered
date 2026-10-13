@@ -1,0 +1,30 @@
+{
+  "state": {
+    "request": "Find facilities able to test above 80 degrees C and with experience similar to the supplied icing-test narrative.",
+    "available_sources": ["facility inventory", "approved test reports"]
+  },
+  "questions": {
+    "has_structured_filters": {
+      "type": "noul",
+      "instructions": "Does the request contain explicit filters that can be checked in the facility inventory?"
+    },
+    "needs_semantic_retrieval": {
+      "type": "noul",
+      "instructions": "Does the request need conceptual comparison with report narratives?"
+    },
+    "first_step": {
+      "type": "choice",
+      "instructions": "Which first acquisition step best narrows this request? This does not exclude later steps.",
+      "criteria": {
+        "exact_filter": "Filter the structured inventory using the explicit temperature requirement.",
+        "document_search": "Search report narratives before filtering the inventory.",
+        "clarify": "The request lacks enough information to choose a useful first step."
+      }
+    },
+    "specificity": {
+      "type": "score",
+      "instructions": "How specific is the request for planning targeted acquisition? This does not judge evidence sufficiency.",
+      "criteria": ["No usable detail", "Some usable detail", "Specific enough for targeted lookup"]
+    }
+  }
+}

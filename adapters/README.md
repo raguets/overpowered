@@ -15,5 +15,6 @@ The portable skill should not hard-code harness tool names.
 ## Reference adapters
 
 - `pi.md` — reference design for Pi, using its skill/context reload and dynamic extension/tool capabilities.
+- `knowledge-integrations.md` — reuse an external retrieval skill and Pi's existing SystemOne extension, including Ollama/Clef-Flash configuration and verification.
 
 An adapter document is not itself a bundled executable extension unless explicitly stated.

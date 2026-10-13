@@ -132,6 +132,63 @@
         "Retains the source identity and page location after preparation",
         "Does not treat successful extraction as proof of a complete or accurate requirement; reports the remaining evidence gap"
       ]
+    },
+    {
+      "id": 13,
+      "prompt": "An installed retrieval skill documents its own request format and returns a generated answer in a chat-message field with inline citations. Ask it for the applicable inspection rule for pump P-4. It returns 'Inspect every 30 days [Maintenance-P4.md, page 6]' but exposes no original passage, approval date, or version. Current authority is essential for this decision. Original-document access is currently unavailable. The deployment advertises no hybrid-search or reranking parameters.",
+      "expected_output": "Reuses the installed skill and its actual response contract. Preserves the returned answer and citation as a synthesis, reports the missing original/current authority, and concludes NOT ENOUGH for a definitive current rule without inventing fields or implementing another client.",
+      "assertions": [
+        "Reads and follows the available skill's request/response contract instead of assuming a generic RAG API",
+        "Does not recreate the skill, its transport, or a reranker, and does not send unsupported search parameters",
+        "Preserves Maintenance-P4.md page 6 while distinguishing a cited synthesis from inspected original evidence",
+        "Does not invent source identifiers, approval dates, versions, or authority",
+        "Reports NOT ENOUGH and the specific evidence needed for the current rule"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Find facilities able to test above 80 degrees C and with experience similar to a supplied icing-test narrative. Both a structured facility inventory and an authorized report corpus are accessible. For this evaluation, use an existing approved classification capability to help resolve the acquisition strategy. It can return multiple named judgments over shared context, named exclusive choices, or ordered rubric scores. No task-specific thresholds have been calibrated. Its two relevant condition estimates are 0.91 for structured filters and 0.88 for conceptual retrieval.",
+      "expected_output": "Asks independent named questions for structured filters and conceptual retrieval rather than forcing an exclusive strategy choice. Interprets the two estimates in context, plans both exact filtering and documentary retrieval as needed, and verifies source evidence before concluding sufficiency.",
+      "assertions": [
+        "Uses the existing capability with only the request context required for the two judgments",
+        "Allows both conditions to hold and does not require their probabilities to sum to one",
+        "Does not hard-code a universal probability threshold or treat estimates as proof that facilities qualify",
+        "Preserves question IDs and results, then checks inventory records and report provenance",
+        "Leaves deployment configuration, model selection, and transport to the existing capability"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Plan a targeted search using a classification capability only if needed. Consider four independent variants: A, classification is disabled; B, the configured approved endpoint times out; C, the tool exists and model weights are installed but the server rejects the typed classification route; D, the classifier returns 0.50 for a material yes/no question. In every variant, a remote classifier is advertised but not authorized for this context, and exact reference lookup plus the active model's reasoning can resolve the acquisition strategy.",
+      "expected_output": "Uses the active model's reasoning and available exact lookup in every variant, with the relevant classification limitation explicit. Does not infer endpoint compatibility from tool/model presence, automatically switch to the remote service, or loop on classification.",
+      "assertions": [
+        "Does not call a disabled classifier or transmit context to an unapproved alternative",
+        "Distinguishes disabled, failed, incompatible, and ambiguous classification from missing source evidence",
+        "Does not treat downloaded weights or a registered tool as proof of compatible HTTP serving",
+        "Continues with a reasoned available fallback without creating another client or installing a server",
+        "Makes a sufficiency judgment from the retrieved evidence rather than classifier availability"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "A configured classification capability returns a fractional score of 1.5 on the ordered rubric ['no usable detail', 'some usable detail', 'specific enough for targeted lookup'], complete probabilities and legend, and a confidence statistic of 0.7. It also omits the answer to a second question about needing documentary evidence; its validator reports an incomplete response. The current evidence is an old unapproved draft. Decide how to proceed with acquisition.",
+      "expected_output": "Recognizes the incomplete result and uses a reasoned fallback, retaining the rubric meaning if discussing the partial score. Seeks current authoritative evidence through an available capability; no classification statistic establishes that the draft is sufficient.",
+      "assertions": [
+        "Does not replace the missing answer with zero or a false value",
+        "Does not round 1.5 into a categorical result or interpret 0.7 as factual correctness",
+        "Respects the capability's validation failure and does not fabricate a complete result",
+        "Checks freshness and authority of source evidence independently of classification"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "An approved specialized classifier and a retrieval service are available. Confirm whether batch C-2 meets the current requirement. All evidence is supplied: approved QA-9 v2 section 1 requires at least 90 percent coverage; today's signed complete C-2 record shows 96 percent. Scope, units, and authority match and no contradictions are known.",
+      "expected_output": "Uses the supplied evidence to conclude ENOUGH without invoking retrieval or specialized classification solely because they are available.",
+      "assertions": [
+        "Performs no unnecessary classification or retrieval",
+        "Cites the supplied requirement and record for the conclusion",
+        "Preserves specialized classification as optional even when installed and approved"
+      ]
     }
   ]
 }
