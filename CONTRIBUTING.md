@@ -27,6 +27,17 @@ For adaptive capability contributions, additionally preserve these invariants:
 
 ## Local validation
 
+Install the locked development dependencies before checking the TypeScript runtime:
+
+```bash
+npm ci --include=dev
+npm run check
+```
+
+This installs the local compiler, test runner, and Node.js type definitions. A missing `@types/node` error usually indicates that dependencies have not been installed or development dependencies were omitted.
+
+Validate the skill suite separately:
+
 ```bash
 python -m pip install pyyaml
 python scripts/validate_suite.py

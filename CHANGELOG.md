@@ -4,6 +4,7 @@ All notable changes to Overpowered will be documented here.
 
 ## Unreleased
 
+- Fixed runtime path containment for roots reached through symlinked parents, including macOS temporary directories, while retaining rejection of links escaping the root.
 - Integrated optional F1/F2 through existing external retrieval and classification capabilities, with generic handoff rules, evaluation scenarios, and a Pi/Ollama deployment note.
 - Added opt-in compatibility checks against external `pi-system-one` source with synthetic HTTP responses, plus a live harness smoke procedure.
 - Fixed the npm file pattern so skill reference contents, including adaptive retrieval guidance, are included in the package.
